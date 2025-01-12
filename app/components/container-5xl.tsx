@@ -9,12 +9,7 @@ export default function Container5xl({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        className,
-        "mx-auto max-w-5xl h-full flex items-center relative min-h-fit"
-      )}
-    >
+    <div className={cn(className, "relative mx-auto min-h-fit max-w-5xl")}>
       {children}
     </div>
   );

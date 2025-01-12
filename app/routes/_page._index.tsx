@@ -1,30 +1,20 @@
-import { ArrowRight, Github, Instagram, Mail } from "lucide-react";
-import { useLoaderData } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
 import { motion } from "framer-motion";
 import Container5xl from "~/components/container-5xl";
-
-export const clientLoader = () => {
-  return [
-    { title: "Github", url: "", icon: <Github /> },
-    { title: "Instagram", url: "", icon: <Instagram /> },
-    { title: "Email", url: "", icon: <Mail /> },
-  ];
-};
+import { berandaContent } from "~/meta/beranda";
 
 export default function BerandaComponent() {
-  const loaderData = useLoaderData<typeof clientLoader>();
-
   return (
     <>
-      <section className="h-svh mx-4">
-        <Container5xl className="justify-start">
-          <div className="flex flex-col w-fit max-w-[30rem] gap-y-2">
+      <section className="mx-4 h-[calc(100svh_-_12rem)]">
+        <Container5xl className="flex h-full items-center justify-start">
+          <div className="flex w-fit max-w-[30rem] flex-col gap-y-2">
             <motion.span
               initial={{ translateY: 50, opacity: 0 }}
               animate={{ translateY: 0, opacity: 1 }}
               transition={{ type: "spring", bounce: 0.5 }}
-              className="md:text-2xl text-lg"
+              className="text-lg md:text-2xl"
             >
               Saya
             </motion.span>
@@ -33,9 +23,9 @@ export default function BerandaComponent() {
               initial={{ translateY: 50, opacity: 0 }}
               animate={{ translateY: 0, opacity: 1 }}
               transition={{ type: "spring", bounce: 0.5, delay: 0.06 }}
-              className="md:text-6xl text-5xl font-semibold font-serif"
+              className="font-serif text-5xl font-semibold md:text-6xl"
             >
-              Naufal Faisal
+              {berandaContent.whoami}
             </motion.h1>
 
             <motion.p
@@ -46,11 +36,9 @@ export default function BerandaComponent() {
                 type: "spring",
                 bounce: 0.5,
               }}
-              className="md:text-base text-sm"
+              className="text-sm md:text-base"
             >
-              Saya membuat aplikasi web dengan metode server-side rendering
-              (SSR) dan file-based routing menggunakan framework React dan Remix
-              untuk membangun aplikasi web yang cepat dan SEO-friendly.
+              {berandaContent.bio}
             </motion.p>
 
             <motion.div
@@ -63,9 +51,15 @@ export default function BerandaComponent() {
               }}
               className="my-4"
             >
-              <Button variant="outline">
-                Tentang saya <ArrowRight />
-              </Button>
+              {berandaContent.direct_button.map(
+                ({ title, direct, icon: Icon }, key) => (
+                  <Button key={key} variant="outline" asChild>
+                    <Link to={direct}>
+                      {title} <Icon />
+                    </Link>
+                  </Button>
+                ),
+              )}
             </motion.div>
 
             <motion.div
@@ -78,8 +72,8 @@ export default function BerandaComponent() {
               }}
               className="flex gap-4"
             >
-              {loaderData.map(({ title, icon, url }, key) => {
-                return (
+              {berandaContent.url_button.map(
+                ({ title, icon: Icon, url }, key) => (
                   <a
                     href={url}
                     rel="noreferrer"
@@ -87,15 +81,15 @@ export default function BerandaComponent() {
                     key={key}
                     title={title}
                   >
-                    {icon}
+                    <Icon />
                   </a>
-                );
-              })}
+                ),
+              )}
             </motion.div>
           </div>
 
-          <div className="absolute right-0 md:z-auto -z-10 md:opacity-100 opacity-5 md:blur-none blur-sm">
-            <div className="relative *:absolute size-96 *:top-[50%] *:left-[50%] select-none">
+          <div className="absolute right-0 -z-10 opacity-5 blur-sm md:opacity-100 md:blur-none lg:z-auto">
+            <div className="relative size-96 select-none *:absolute *:left-[50%] *:top-[50%]">
               <motion.img
                 initial={{
                   scale: 0,

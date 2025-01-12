@@ -26,7 +26,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="id"
-      className="scroll-smooth scroll-pb-[var(--mobile-navbar-height)] md:scroll-pt-[var(--desktop-navbar-height)]"
+      className="scroll-pb-[var(--mobile-navbar-height)] scroll-smooth md:scroll-pt-[var(--desktop-navbar-height)]"
     >
       <head>
         <meta charSet="utf-8" />

@@ -1,23 +1,39 @@
 import { Outlet, useLocation } from "@remix-run/react";
-import { AnimatePresence } from "framer-motion";
-import NavbarLink from "~/components/navbar-link";
+import { AnimatePresence, motion } from "framer-motion";
+
+import Container5xl from "~/components/container-5xl";
+import NavbarLinkDesktop from "~/components/navbar-link-desktop";
 
 export default function Index() {
   const location = useLocation();
 
   return (
     <>
-      {/* <NavbarDesktop className="sticky top-0 backdrop-blur bg-opacity-80 bg-white" /> */}
+      {/* <nav className="absolute right-[50%] top-8 z-50 min-h-fit max-w-5xl translate-x-[50%]">
+        <NavbarLinkDesktop />
+      </nav> */}
 
-      <nav className="max-w-5xl min-h-fit absolute w-full translate-x-[50%] right-[50%] top-8 z-50">
-        <div className="ms-auto w-fit rounded-s-md flex gap-2 relative">
-          <NavbarLink />
-        </div>
+      <nav className="mx-4 h-24">
+        <Container5xl className="flex h-full items-center justify-center">
+          <NavbarLinkDesktop />
+        </Container5xl>
       </nav>
 
-      <AnimatePresence mode="wait">
-        <Outlet key={location.pathname} />
-      </AnimatePresence>
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 40 }}
+        transition={{
+          type: "spring",
+          visualDuration: 0.3,
+          bounce: 0.4,
+        }}
+      >
+        <AnimatePresence mode="wait">
+          <Outlet />
+        </AnimatePresence>
+      </motion.div>
 
       {/* <NavbarMobile className="sticky bottom-0 backdrop-blur bg-opacity-80 bg-white" /> */}
     </>
