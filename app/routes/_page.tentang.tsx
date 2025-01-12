@@ -14,10 +14,10 @@ export default function PageTentang() {
       <section className="mx-4">
         <Container5xl>
           <div className="grid h-36 place-content-center gap-2 text-center">
-            <h1 className="font-serif text-5xl font-semibold md:text-6xl">
+            <h1 className="font-serif text-4xl font-semibold md:text-5xl">
               Tentang Saya
             </h1>
-            <p className="text-sm text-neutral-500 md:text-base">
+            <p className="text-xs text-neutral-500 md:text-base">
               Cerita singkat tentang saya
             </p>
           </div>

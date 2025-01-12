@@ -46,7 +46,7 @@ export default function BerandaComponent() {
                 type: "spring",
                 bounce: 0.5,
               }}
-              className="text-sm md:text-base"
+              className="text-xs md:text-base"
             >
               {berandaContent.bio}
             </motion.p>
