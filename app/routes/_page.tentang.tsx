@@ -1,7 +1,14 @@
+import type { MetaFunction } from "@remix-run/node";
 import Container5xl from "~/components/container-5xl";
 
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Tentang | Naufal Faisal" },
+    { name: "description", content: "Cerita singkat tentang saya" },
+  ];
+};
+
 export default function PageTentang() {
-  // <section className="mx-4 h-[calc(100svh_-_6rem)]">
   return (
     <>
       <section className="mx-4">

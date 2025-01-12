@@ -1,4 +1,13 @@
+import { MetaFunction } from "@remix-run/node";
 import Container5xl from "~/components/container-5xl";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Proyek | Naufal Faisal" },
+    { name: "description", content: "Beberapa proyek yang sudah saya buat" },
+    { name: "keywords", content: "portfolio, projects, proyek" },
+  ];
+};
 
 export default function ProyekPage() {
   return (
