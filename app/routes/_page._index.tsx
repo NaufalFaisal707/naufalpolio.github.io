@@ -3,6 +3,16 @@ import { Button } from "~/components/ui/button";
 import { motion } from "framer-motion";
 import Container5xl from "~/components/container-5xl";
 import { berandaContent } from "~/meta/beranda";
+import { MetaFunction } from "@remix-run/node";
+
+export const meta: MetaFunction = () => [
+  { title: "Naufal Faisal" },
+  {
+    name: "description",
+    content:
+      "ini adalah web portfolio yang saya buat untuk membagikan pengalaman dan skill yang saya miliki sebagai fullstack developer.",
+  },
+];
 
 export default function BerandaComponent() {
   return (
