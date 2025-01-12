@@ -98,7 +98,7 @@ export default function BerandaComponent() {
             </motion.div>
           </div>
 
-          <div className="absolute right-0 -z-10 opacity-5 blur-sm md:opacity-100 md:blur-none lg:z-auto">
+          <div className="absolute right-0 -z-10 opacity-15 blur-sm md:opacity-100 md:blur-none lg:z-auto">
             <div className="relative size-96 select-none *:absolute *:left-[50%] *:top-[50%]">
               <motion.img
                 initial={{

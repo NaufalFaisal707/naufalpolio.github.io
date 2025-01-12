@@ -2,7 +2,7 @@ import { Outlet, useLocation } from "@remix-run/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Container5xl from "~/components/container-5xl";
-import NavbarLinkDesktop from "~/components/navbar-link-desktop";
+import NavbarLink from "~/components/navbar-link";
 
 export default function Index() {
   const location = useLocation();
@@ -15,7 +15,7 @@ export default function Index() {
 
       <nav className="mx-4 h-24">
         <Container5xl className="flex h-full items-center justify-center">
-          <NavbarLinkDesktop />
+          <NavbarLink className="relative flex w-fit" />
         </Container5xl>
       </nav>
 
