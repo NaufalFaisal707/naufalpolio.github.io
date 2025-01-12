@@ -9,10 +9,6 @@ export default function Index() {
 
   return (
     <>
-      {/* <nav className="absolute right-[50%] top-8 z-50 min-h-fit max-w-5xl translate-x-[50%]">
-        <NavbarLinkDesktop />
-      </nav> */}
-
       <nav className="mx-4 h-24">
         <Container5xl className="flex h-full items-center justify-center">
           <NavbarLink className="relative flex w-fit" />

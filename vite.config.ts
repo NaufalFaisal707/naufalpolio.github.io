@@ -11,12 +11,13 @@ declare module "@remix-run/node" {
 
 export default defineConfig({
   resolve: {
-     alias: {
-       "~": path.resolve(__dirname, "./app"),
-     },
-   },
+      alias: {
+        "~": path.resolve(__dirname, "./app"),
+      },
+    },
   plugins: [
     remix({
+      ssr: false,
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
