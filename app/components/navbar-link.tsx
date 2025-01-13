@@ -10,7 +10,9 @@ export default function NavbarLink({ className }: { className?: string }) {
   useEffect(() => {
     const updateNavFocus = () => {
       const navFocusIndicator = document.getElementById("nav-focus");
-      const targetNav = document.getElementById(location.pathname);
+      const targetNav = document.getElementById(
+        "/" + location.pathname.split("/")[1],
+      );
 
       if (targetNav && navFocusIndicator) {
         const focusElement = targetNav as HTMLElement;

@@ -6,6 +6,9 @@ import {
   Group,
   Notebook,
   ClipboardList,
+  Radio,
+  ExternalLink,
+  Construction,
 } from "lucide-react";
 import {
   SiInstagram,
@@ -63,6 +66,41 @@ export const bio_data = {
   ],
 };
 
+export const live_project = {
+  title: "Live Project",
+  icon: Radio,
+  description: "Proyek yang bisa di coba secara langsung menggunakan browser",
+  direct_button: {
+    title: "Kunjungi Sekarang",
+    direct: "live-project",
+    icon: ExternalLink,
+  },
+};
+
+export const project_categories = [
+  live_project,
+  {
+    title: "Segera Hadir",
+    icon: Construction,
+    description: "Segera Hadir",
+    direct_button: {
+      title: "Segera Hadir",
+      direct: "",
+      icon: Construction,
+    },
+  },
+  {
+    title: "Segera Hadir",
+    icon: Construction,
+    description: "Segera Hadir",
+    direct_button: {
+      title: "Segera Hadir",
+      direct: "",
+      icon: Construction,
+    },
+  },
+];
+
 const React = { title: "React", icon: SiReact, url: "https://react.dev/" };
 const Remix = { title: "Remix", icon: SiRemix, url: "https://remix.run/" };
 const TailwindCSS = {
@@ -91,7 +129,7 @@ const PostgreSQL = {
   url: "https://www.postgresql.org/",
 };
 
-export const projects = [
+export const live_projects = [
   {
     title: "Notes App",
     icon: Notebook,
@@ -106,11 +144,24 @@ export const projects = [
     tech: [React, Remix, TailwindCSS, ShadcnUI, Prisma, PostgreSQL],
     project_url: "https://github.com/NaufalFaisal707/todos-app",
   },
-  {
-    title: "Room App",
-    icon: Group,
-    description: "Aplikasi web sederhana untuk mengirim pesan antar pengguna",
-    tech: [React, Remix, TailwindCSS, ShadcnUI, SocketIO, Prisma, PostgreSQL],
-    project_url: "https://github.com/NaufalFaisal707/remix-room-app",
-  },
 ];
+
+// projects: [
+// ],
+
+// {
+//   title: "Room App",
+//   icon: Group,
+//   description:
+//     "Aplikasi web sederhana untuk mengirim pesan antar pengguna",
+//   tech: [
+//     React,
+//     Remix,
+//     TailwindCSS,
+//     ShadcnUI,
+//     SocketIO,
+//     Prisma,
+//     PostgreSQL,
+//   ],
+//   project_url: "https://github.com/NaufalFaisal707/remix-room-app",
+// },
