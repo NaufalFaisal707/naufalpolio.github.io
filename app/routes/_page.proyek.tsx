@@ -12,7 +12,7 @@ export const meta: MetaFunction = () => [
 export default function ProyekPage() {
   return (
     <>
-      <section className="mx-4 min-h-fit">
+      <section className="min-h-fit">
         <Container5xl>
           <div className="grid h-36 place-content-center gap-2 text-center">
             <h1 className="font-serif text-4xl font-semibold md:text-5xl">
@@ -25,7 +25,7 @@ export default function ProyekPage() {
         </Container5xl>
       </section>
 
-      <section className="mx-4 min-h-fit">
+      <section className="min-h-fit">
         <Container5xl className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map(
             ({ title, icon: Icon, description, project_url, tech }, key1) => (
