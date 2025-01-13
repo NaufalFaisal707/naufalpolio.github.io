@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  overflow-x: hidden;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -71,4 +66,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-

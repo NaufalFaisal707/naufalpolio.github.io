@@ -40,7 +40,7 @@ export default function NavbarLink({ className }: { className?: string }) {
           variant="link"
           key={key}
           asChild
-          className="flex min-h-fit place-items-center text-base"
+          className="z-20 flex min-h-fit place-items-center text-base"
         >
           <Link to={link}>
             <Icon />
@@ -61,7 +61,7 @@ export default function NavbarLink({ className }: { className?: string }) {
 
       <span
         id="nav-focus"
-        className="absolute -z-10 h-full rounded-md bg-neutral-100 duration-150 ease-in-out"
+        className="absolute z-10 h-full rounded-md bg-neutral-100 duration-150 ease-in-out"
       />
     </div>
   );

@@ -17,8 +17,8 @@ export const meta: MetaFunction = () => [
 export default function BerandaPage() {
   return (
     <>
-      <section className="mx-4 h-[calc(100svh_-_12rem)]">
-        <Container5xl className="flex h-full items-center justify-start">
+      <section className="h-[calc(100svh_-_12rem)] min-h-fit">
+        <Container5xl className="flex h-full items-center justify-start p-4">
           <div className="flex w-fit max-w-[30rem] flex-col gap-y-2">
             <motion.span
               initial={{ translateY: 50, opacity: 0 }}
