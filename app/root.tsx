@@ -7,9 +7,14 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
-import "./tailwind.css";
+import tailwind from "./tailwind.css?url";
+import React from "react";
 
 export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: tailwind,
+  },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -24,11 +29,11 @@ export const links: LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
+        <Meta />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
         <Links />
       </head>
       <body>
@@ -45,5 +50,10 @@ export default function App() {
 }
 
 export function HydrateFallback() {
-  return <p>Loading...</p>;
+  return (
+    <>
+      <p>Sedang memuat halaman...</p>
+      <noscript>Pastikan untuk mengaktifkan Javascript pada browser!.</noscript>
+    </>
+  );
 }

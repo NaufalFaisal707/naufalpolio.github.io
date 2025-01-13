@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
 import { motion } from "framer-motion";
 import Container5xl from "~/components/container-5xl";
-import { berandaContent } from "~/meta/beranda";
+import { bio_data } from "~/meta";
 import { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => [
@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => [
   },
 ];
 
-export default function BerandaComponent() {
+export default function BerandaPage() {
   return (
     <>
       <section className="mx-4 h-[calc(100svh_-_12rem)]">
@@ -35,7 +35,7 @@ export default function BerandaComponent() {
               transition={{ type: "spring", bounce: 0.5, delay: 0.06 }}
               className="font-serif text-5xl font-semibold md:text-6xl"
             >
-              {berandaContent.whoami}
+              {bio_data.whoami}
             </motion.h1>
 
             <motion.p
@@ -46,9 +46,9 @@ export default function BerandaComponent() {
                 type: "spring",
                 bounce: 0.5,
               }}
-              className="text-xs md:text-base"
+              className="text-xs text-neutral-600 md:text-base"
             >
-              {berandaContent.bio}
+              {bio_data.bio}
             </motion.p>
 
             <motion.div
@@ -61,7 +61,7 @@ export default function BerandaComponent() {
               }}
               className="my-4"
             >
-              {berandaContent.direct_button.map(
+              {bio_data.direct_button.map(
                 ({ title, direct, icon: Icon }, key) => (
                   <Button key={key} variant="outline" asChild>
                     <Link to={direct}>
@@ -82,19 +82,17 @@ export default function BerandaComponent() {
               }}
               className="flex gap-4"
             >
-              {berandaContent.url_button.map(
-                ({ title, icon: Icon, url }, key) => (
-                  <a
-                    href={url}
-                    rel="noreferrer"
-                    target="_blank"
-                    key={key}
-                    title={title}
-                  >
-                    <Icon />
-                  </a>
-                ),
-              )}
+              {bio_data.url_button.map(({ title, icon: Icon, url }, key) => (
+                <a
+                  href={url}
+                  rel="noreferrer"
+                  target="_blank"
+                  key={key}
+                  title={title}
+                >
+                  <Icon />
+                </a>
+              ))}
             </motion.div>
           </div>
 

@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Link, useLocation } from "@remix-run/react";
 import { useEffect } from "react";
-import { navbarRoute } from "~/meta/navbar";
+import { navigation_links } from "~/meta";
 import { motion } from "framer-motion";
 
 export default function NavbarLink({ className }: { className?: string }) {
@@ -34,7 +34,7 @@ export default function NavbarLink({ className }: { className?: string }) {
 
   return (
     <div className={className}>
-      {navbarRoute.map(({ link, name, icon: Icon }, key) => (
+      {navigation_links.map(({ link, name, icon: Icon }, key) => (
         <Button
           id={link}
           variant="link"
