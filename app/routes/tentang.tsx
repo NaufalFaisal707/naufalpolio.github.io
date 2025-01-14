@@ -12,7 +12,7 @@ export default function TentangPage() {
   return (
     <>
       <section>
-        <Container5xl>
+        <Container5xl className="px-4">
           <div className="grid h-36 place-content-center gap-2 text-center">
             <h1 className="font-serif text-4xl font-semibold md:text-5xl">
               Tentang Saya

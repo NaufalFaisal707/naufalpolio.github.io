@@ -12,8 +12,6 @@ export const clientLoader = async () => {
 
   const listPublicRepos = (await githubUserRepos.json()) as github_user_repos[];
 
-  console.log(listPublicRepos);
-
   return listPublicRepos.filter((f) => f.topics.includes("live-project"));
 };
 
@@ -23,7 +21,7 @@ export default function LiveProjects() {
   return (
     <>
       <section className="min-h-fit">
-        <Container5xl className="p-4">
+        <Container5xl className="px-4">
           <div className="grid h-36 place-content-center gap-2 text-center">
             <h1 className="font-serif text-4xl font-semibold md:text-5xl">
               {live_project.title}
@@ -43,15 +41,17 @@ export default function LiveProjects() {
                 key={key1}
                 className="flex flex-col gap-4 rounded-md border p-4"
               >
-                <a
-                  href={html_url}
-                  className="flex w-full items-center gap-2 text-lg font-semibold hover:underline lg:text-2xl"
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Kunjungi repository"
-                >
-                  <span className="truncate">{name}</span>
-                </a>
+                <div className="truncate">
+                  <a
+                    href={html_url}
+                    className="text-lg font-semibold hover:underline lg:text-2xl"
+                    target="_blank"
+                    rel="noreferrer"
+                    title="Kunjungi repository"
+                  >
+                    {name}
+                  </a>
+                </div>
 
                 <p
                   className={cn(
