@@ -3,24 +3,13 @@ import {
   Sparkles,
   Pickaxe,
   ArrowRight,
-  Group,
-  Notebook,
-  ClipboardList,
   Radio,
-  ExternalLink,
   Construction,
 } from "lucide-react";
 import {
   SiInstagram,
   SiGithub,
   SiThreads,
-  SiReact,
-  SiRemix,
-  SiTailwindcss,
-  SiShadcnui,
-  SiPrisma,
-  SiPostgresql,
-  SiSocketdotio,
 } from "@icons-pack/react-simple-icons";
 
 export const navigation_links = [
@@ -31,6 +20,7 @@ export const navigation_links = [
 
 export const bio_data = {
   whoami: "Naufal Faisal",
+  github_username: "NaufalFaisal707",
   bio: "Saya membuat aplikasi web dengan metode server-side rendering (SSR) dan file-based routing menggunakan framework React dan Remix untuk membangun aplikasi web yang cepat dan SEO-friendly.",
   my_kisah: {
     paragraph1:
@@ -68,83 +58,74 @@ export const bio_data = {
 
 export const live_project = {
   title: "Live Project",
+  tag: "live-project",
   icon: Radio,
   description: "Proyek yang bisa di coba secara langsung menggunakan browser",
-  direct_button: {
-    title: "Kunjungi Sekarang",
-    direct: "live-project",
-    icon: ExternalLink,
-  },
+  is_avaliable: true,
 };
 
 export const project_categories = [
   live_project,
   {
     title: "Segera Hadir",
+    tag: "",
     icon: Construction,
     description: "Segera Hadir",
-    direct_button: {
-      title: "Segera Hadir",
-      direct: "",
-      icon: Construction,
-    },
+    is_avaliable: false,
   },
   {
     title: "Segera Hadir",
+    tag: "",
     icon: Construction,
     description: "Segera Hadir",
-    direct_button: {
-      title: "Segera Hadir",
-      direct: "",
-      icon: Construction,
-    },
+    is_avaliable: false,
   },
 ];
 
-const React = { title: "React", icon: SiReact, url: "https://react.dev/" };
-const Remix = { title: "Remix", icon: SiRemix, url: "https://remix.run/" };
-const TailwindCSS = {
-  title: "Tailwindcss",
-  icon: SiTailwindcss,
-  url: "https://tailwindcss.com/",
-};
-const ShadcnUI = {
-  title: "Shadcn/UI",
-  icon: SiShadcnui,
-  url: "https://ui.shadcn.com/",
-};
-const SocketIO = {
-  title: "Socket.io",
-  icon: SiSocketdotio,
-  url: "https://socket.io/",
-};
-const Prisma = {
-  title: "Prisma",
-  icon: SiPrisma,
-  url: "https://www.prisma.io/",
-};
-const PostgreSQL = {
-  title: "PostgreSQL",
-  icon: SiPostgresql,
-  url: "https://www.postgresql.org/",
-};
+// const React = { title: "React", icon: SiReact, url: "https://react.dev/" };
+// const Remix = { title: "Remix", icon: SiRemix, url: "https://remix.run/" };
+// const TailwindCSS = {
+//   title: "Tailwindcss",
+//   icon: SiTailwindcss,
+//   url: "https://tailwindcss.com/",
+// };
+// const ShadcnUI = {
+//   title: "Shadcn/UI",
+//   icon: SiShadcnui,
+//   url: "https://ui.shadcn.com/",
+// };
+// const SocketIO = {
+//   title: "Socket.io",
+//   icon: SiSocketdotio,
+//   url: "https://socket.io/",
+// };
+// const Prisma = {
+//   title: "Prisma",
+//   icon: SiPrisma,
+//   url: "https://www.prisma.io/",
+// };
+// const PostgreSQL = {
+//   title: "PostgreSQL",
+//   icon: SiPostgresql,
+//   url: "https://www.postgresql.org/",
+// };
 
-export const live_projects = [
-  {
-    title: "Notes App",
-    icon: Notebook,
-    description: "Aplikasi catatan sederhana berbasis web",
-    tech: [React, Remix, TailwindCSS, ShadcnUI, Prisma, PostgreSQL],
-    project_url: "https://github.com/NaufalFaisal707/notes-app",
-  },
-  {
-    title: "Todos App",
-    icon: ClipboardList,
-    description: "Aplikasi todo sederhana berbasis web",
-    tech: [React, Remix, TailwindCSS, ShadcnUI, Prisma, PostgreSQL],
-    project_url: "https://github.com/NaufalFaisal707/todos-app",
-  },
-];
+// export const live_projects = [
+//   {
+//     title: "Notes App",
+//     icon: Notebook,
+//     description: "Aplikasi catatan sederhana berbasis web",
+//     tech: [React, Remix, TailwindCSS, ShadcnUI, Prisma, PostgreSQL],
+//     project_url: "https://github.com/NaufalFaisal707/notes-app",
+//   },
+//   {
+//     title: "Todos App",
+//     icon: ClipboardList,
+//     description: "Aplikasi todo sederhana berbasis web",
+//     tech: [React, Remix, TailwindCSS, ShadcnUI, Prisma, PostgreSQL],
+//     project_url: "https://github.com/NaufalFaisal707/todos-app",
+//   },
+// ];
 
 // projects: [
 // ],

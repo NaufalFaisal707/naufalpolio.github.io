@@ -1,4 +1,5 @@
 import { Link, MetaFunction } from "@remix-run/react";
+import { Construction, ExternalLink } from "lucide-react";
 import Container5xl from "~/components/container-5xl";
 import { Button } from "~/components/ui/button";
 import { project_categories } from "~/meta";
@@ -19,7 +20,7 @@ export default function ProyekCategories() {
               Proyek
             </h1>
             <p className="text-xs text-neutral-600 md:text-base">
-              Beberapa proyek yang sudah saya buat
+              Beberapa kategori proyek yang sudah saya buat
             </p>
           </div>
         </Container5xl>
@@ -28,7 +29,7 @@ export default function ProyekCategories() {
       <section className="min-h-fit">
         <Container5xl className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3">
           {project_categories.map(
-            ({ title, icon: Icon, description, direct_button }, key) => (
+            ({ title, icon: Icon, description, tag, is_avaliable }, key) => (
               <div
                 key={key}
                 className="flex flex-col gap-4 rounded-md border p-4"
@@ -36,10 +37,20 @@ export default function ProyekCategories() {
                 <span className="flex w-fit items-center gap-2 text-lg font-semibold lg:text-2xl">
                   <Icon /> {title}
                 </span>
-                <p className="grow text-sm lg:text-base">{description}</p>
+                <p className="grow text-sm text-neutral-600 lg:text-base">
+                  {description}
+                </p>
                 <Button asChild variant="outline">
-                  <Link to={direct_button.direct}>
-                    {direct_button.title} <direct_button.icon />
+                  <Link to={tag}>
+                    {is_avaliable ? (
+                      <>
+                        Kunjungi Sekarang <ExternalLink />
+                      </>
+                    ) : (
+                      <>
+                        Segera Hadir <Construction />
+                      </>
+                    )}
                   </Link>
                 </Button>
               </div>
