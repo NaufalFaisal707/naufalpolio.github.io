@@ -1,9 +1,15 @@
-import { useLoaderData } from "@remix-run/react";
+import { MetaFunction, useLoaderData } from "@remix-run/react";
 import Container5xl from "~/components/container-5xl";
 import { Button } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 import { live_project, bio_data } from "~/meta";
 import { github_user_repos } from "~/types";
+
+export const meta: MetaFunction = () => [
+  { title: `${live_project.title} | Naufal Faisal` },
+  { name: "description", content: live_project.description },
+  { name: "keywords", content: "portfolio, live projects, proyek langsung" },
+];
 
 export const clientLoader = async () => {
   const githubUserRepos = await fetch(
