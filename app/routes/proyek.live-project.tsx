@@ -44,7 +44,7 @@ export default function LiveProjects() {
                 <div className="truncate">
                   <a
                     href={html_url}
-                    className="text-lg font-semibold hover:underline lg:text-2xl"
+                    className="text-xl font-semibold hover:underline"
                     target="_blank"
                     rel="noreferrer"
                     title="Kunjungi repository"
@@ -56,7 +56,7 @@ export default function LiveProjects() {
                 <p
                   className={cn(
                     description ? "" : "italic",
-                    "grow text-sm text-neutral-600 lg:text-base",
+                    "grow text-xs text-neutral-600",
                   )}
                 >
                   {description || "Tidak ada deskripsi"}

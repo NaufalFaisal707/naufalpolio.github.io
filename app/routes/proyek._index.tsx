@@ -34,12 +34,10 @@ export default function ProyekCategories() {
                 key={key}
                 className="flex flex-col gap-4 rounded-md border p-4"
               >
-                <span className="flex w-fit items-center gap-2 text-lg font-semibold lg:text-2xl">
+                <span className="flex items-center gap-2 text-xl font-semibold">
                   <Icon /> {title}
                 </span>
-                <p className="grow text-sm text-neutral-600 lg:text-base">
-                  {description}
-                </p>
+                <p className="grow text-xs text-neutral-600">{description}</p>
                 <Button asChild variant="outline">
                   <Link to={tag}>
                     {is_avaliable ? (
