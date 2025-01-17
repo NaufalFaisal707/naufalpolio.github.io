@@ -1,9 +1,12 @@
 import { MetaFunction, useLoaderData } from "@remix-run/react";
 import Container5xl from "~/components/container-5xl";
+import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
 import { cn } from "~/lib/utils";
 import { live_project, bio_data } from "~/meta";
 import { github_user_repos } from "~/types";
+import { useState } from "react";
 
 export const meta: MetaFunction = () => [
   { title: `${live_project.title} | Naufal Faisal` },
@@ -24,6 +27,17 @@ export const clientLoader = async () => {
 export default function LiveProjects() {
   const loaderData = useLoaderData<typeof clientLoader>();
 
+  const [pencarian, setPencarian] = useState("");
+
+  function filterProjects() {
+    return loaderData.filter((f) => {
+      return (
+        f.name?.toLowerCase().includes(pencarian.toLowerCase()) ||
+        f.description?.toLowerCase().includes(pencarian.toLowerCase())
+      );
+    });
+  }
+
   return (
     <>
       <section className="min-h-fit">
@@ -40,8 +54,15 @@ export default function LiveProjects() {
       </section>
 
       <section className="min-h-fit">
+        <Container5xl className="flex w-fit p-4">
+          <Input
+            placeholder="Cari Proyek"
+            type="search"
+            onChange={({ target }) => setPencarian(target.value)}
+          />
+        </Container5xl>
         <Container5xl className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3">
-          {loaderData.map(
+          {filterProjects().map(
             ({ name, description, html_url, homepage, topics }, key1) => (
               <div
                 key={key1}
@@ -68,9 +89,11 @@ export default function LiveProjects() {
                   {description || "Tidak ada deskripsi"}
                 </p>
 
-                <div className="flex select-none flex-wrap *:rounded *:bg-neutral-100 *:p-1 *:text-[12px] *:text-neutral-600">
+                <div className="flex select-none flex-wrap gap-1">
                   {topics.map((m, key2) => (
-                    <span key={key2}>{m}</span>
+                    <Badge key={key2} variant="secondary">
+                      {m}
+                    </Badge>
                   ))}
                 </div>
 
