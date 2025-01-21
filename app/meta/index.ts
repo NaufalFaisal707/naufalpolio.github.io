@@ -22,14 +22,11 @@ export const bio_data = {
   whoami: "Naufal Faisal",
   github_username: "NaufalFaisal707",
   bio: "Saya membuat aplikasi web dengan metode server-side rendering (SSR) dan file-based routing menggunakan framework React dan Remix untuk membangun aplikasi web yang cepat dan SEO-friendly.",
-  my_kisah: {
-    paragraph1:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id odio et urna efficitur tempus. Aliquam consequat volutpat sapien, vitae congue sapien pulvinar sit amet.",
-    paragraph2:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id odio et urna efficitur tempus. pulvinar sit amet.",
-    paragraph3:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna ligula, interdum sit amet metus sit non pellentesque tortor.",
-  },
+  my_kisah: `
+  Halo!, perkenalkan saya **Naufal Faisal**, saya senang membangun aplikasi berbasis web menggunakan framework [React](https://react.dev/) karna populatiras dan flexibilitas nya yang cukup baik. Saya juga menggunakan framework [Remix](https://remix.run/) yang memiliki kemampuan Server Side Rendering (SSR) dan file-based routing nya yang sangat mudah untuk di gunakan.
+
+  Saya lahir tahun 2005 di Bandung, Indonesia. Saya pertama kali mempelajari dasar pemograman web dari beberapa video tutorial.
+  `,
   direct_button: [
     {
       title: "Tentang saya",
@@ -81,68 +78,3 @@ export const project_categories = [
     is_avaliable: false,
   },
 ];
-
-// const React = { title: "React", icon: SiReact, url: "https://react.dev/" };
-// const Remix = { title: "Remix", icon: SiRemix, url: "https://remix.run/" };
-// const TailwindCSS = {
-//   title: "Tailwindcss",
-//   icon: SiTailwindcss,
-//   url: "https://tailwindcss.com/",
-// };
-// const ShadcnUI = {
-//   title: "Shadcn/UI",
-//   icon: SiShadcnui,
-//   url: "https://ui.shadcn.com/",
-// };
-// const SocketIO = {
-//   title: "Socket.io",
-//   icon: SiSocketdotio,
-//   url: "https://socket.io/",
-// };
-// const Prisma = {
-//   title: "Prisma",
-//   icon: SiPrisma,
-//   url: "https://www.prisma.io/",
-// };
-// const PostgreSQL = {
-//   title: "PostgreSQL",
-//   icon: SiPostgresql,
-//   url: "https://www.postgresql.org/",
-// };
-
-// export const live_projects = [
-//   {
-//     title: "Notes App",
-//     icon: Notebook,
-//     description: "Aplikasi catatan sederhana berbasis web",
-//     tech: [React, Remix, TailwindCSS, ShadcnUI, Prisma, PostgreSQL],
-//     project_url: "https://github.com/NaufalFaisal707/notes-app",
-//   },
-//   {
-//     title: "Todos App",
-//     icon: ClipboardList,
-//     description: "Aplikasi todo sederhana berbasis web",
-//     tech: [React, Remix, TailwindCSS, ShadcnUI, Prisma, PostgreSQL],
-//     project_url: "https://github.com/NaufalFaisal707/todos-app",
-//   },
-// ];
-
-// projects: [
-// ],
-
-// {
-//   title: "Room App",
-//   icon: Group,
-//   description:
-//     "Aplikasi web sederhana untuk mengirim pesan antar pengguna",
-//   tech: [
-//     React,
-//     Remix,
-//     TailwindCSS,
-//     ShadcnUI,
-//     SocketIO,
-//     Prisma,
-//     PostgreSQL,
-//   ],
-//   project_url: "https://github.com/NaufalFaisal707/remix-room-app",
-// },

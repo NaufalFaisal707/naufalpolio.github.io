@@ -7,7 +7,6 @@ import {
   useLocation,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
-
 import tailwind from "./tailwind.css?url";
 import React from "react";
 import Container5xl from "./components/container-5xl";
@@ -64,9 +63,9 @@ export default function App() {
       <div className="overflow-hidden">
         <motion.div
           key={location.pathname}
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 40 }}
+          exit={{ opacity: 0, x: 10 }}
           transition={{
             type: "spring",
             visualDuration: 0.3,

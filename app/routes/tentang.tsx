@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import Markdown from "react-markdown";
 import Container5xl from "~/components/container-5xl";
 import { bio_data } from "~/meta";
 
@@ -38,9 +39,10 @@ export default function TentangPage() {
             <h1 className="font-serif text-5xl font-semibold">
               {bio_data.whoami}
             </h1>
-            <p className="text-neutral-600">{bio_data.my_kisah.paragraph1}</p>
+            <Markdown className="prose">{bio_data.my_kisah}</Markdown>
+            {/* <p className="text-neutral-600">{bio_data.my_kisah.paragraph1}</p>
             <p className="text-neutral-600">{bio_data.my_kisah.paragraph2}</p>
-            <p className="text-neutral-600">{bio_data.my_kisah.paragraph3}</p>
+            <p className="text-neutral-600">{bio_data.my_kisah.paragraph3}</p> */}
           </div>
         </Container5xl>
       </section>
