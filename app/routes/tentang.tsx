@@ -16,7 +16,7 @@ export default function TentangPage() {
         <Container5xl className="px-4">
           <div className="grid h-36 place-content-center gap-2 text-center">
             <h1 className="font-serif text-4xl font-semibold md:text-5xl">
-              Tentang Saya
+              Tentang
             </h1>
             <p className="text-xs text-neutral-600 md:text-base">
               Cerita singkat tentang saya
@@ -29,20 +29,17 @@ export default function TentangPage() {
         <Container5xl className="grid h-full grid-cols-1 gap-8 p-4 md:grid-cols-2 md:flex-row">
           <div className="grid grow place-content-center">
             <div className="flex h-fit w-fit rotate-3 flex-col gap-y-4 border bg-white p-4">
-              <img src="/pp.jpeg" alt="my kisah" className="w-48 md:w-64" />
-              <h1 className="text-end font-serif text-lg">
+              <img src="/pp.jpeg" alt="my kisah" className="w-40 md:w-56" />
+              <span className="text-end font-serif text-lg">
                 - {bio_data.whoami}
-              </h1>
+              </span>
             </div>
           </div>
           <div className="flex w-fit flex-col justify-center gap-4">
-            <h1 className="font-serif text-5xl font-semibold">
+            <h1 className="font-serif text-4xl font-semibold md:text-5xl">
               {bio_data.whoami}
             </h1>
             <Markdown className="prose">{bio_data.my_kisah}</Markdown>
-            {/* <p className="text-neutral-600">{bio_data.my_kisah.paragraph1}</p>
-            <p className="text-neutral-600">{bio_data.my_kisah.paragraph2}</p>
-            <p className="text-neutral-600">{bio_data.my_kisah.paragraph3}</p> */}
           </div>
         </Container5xl>
       </section>

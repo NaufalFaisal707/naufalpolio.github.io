@@ -27,6 +27,7 @@ export const bio_data = {
 
   Saya lahir tahun 2005 di Bandung, Indonesia. Saya pertama kali mempelajari dasar pemograman web dari beberapa video tutorial.
   `,
+  my_kemajuan: [],
   direct_button: [
     {
       title: "Tentang saya",
