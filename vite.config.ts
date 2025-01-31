@@ -3,9 +3,15 @@ import { installGlobals } from "@remix-run/node";
 import { defineConfig } from "vite";
 import { vercelPreset } from "@vercel/remix/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import path from "path";
 
 installGlobals();
 
 export default defineConfig({
   plugins: [remix({ presets: [vercelPreset()] }), tsconfigPaths()],
+  resolve: {
+    alias: {
+      "~": path.resolve(__dirname, "./app"),
+    },
+  },
 });
