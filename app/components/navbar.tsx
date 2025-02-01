@@ -1,7 +1,6 @@
 import { Button } from "./ui/button";
 import { Link, useLocation } from "@remix-run/react";
 import { useEffect } from "react";
-import { motion } from "framer-motion";
 import { House, Pickaxe, Sparkles } from "lucide-react";
 
 const navigation_links = [
@@ -53,14 +52,9 @@ export default function Navbar({ className }: { className?: string }) {
           <Link to={link}>
             <Icon />
             {location.pathname === link && (
-              <motion.span
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 10 }}
-                className="block md:hidden"
-              >
+              <span className="block animate-fade-right animate-duration-200 animate-ease-in-out md:hidden">
                 {name}
-              </motion.span>
+              </span>
             )}
             <span className="hidden md:block">{name}</span>
           </Link>
