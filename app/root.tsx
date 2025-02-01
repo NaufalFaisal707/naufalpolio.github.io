@@ -8,6 +8,8 @@ import {
 import { type LinksFunction } from "@vercel/remix";
 import { SpeedInsights } from "@vercel/speed-insights/remix";
 import stylesheet from "~/tailwind.css?url";
+import Navbar from "./components/navbar";
+import Container5xl from "./components/container-5xl";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -44,5 +46,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <nav className="sticky top-0 z-50 flex h-24 w-full bg-white/90 backdrop-blur">
+        <Navbar className="relative m-auto flex w-fit rounded-md" />
+      </nav>
+      <Container5xl>
+        <Outlet />
+      </Container5xl>
+    </>
+  );
 }
