@@ -1,18 +1,22 @@
 import {
+  type ClientLoaderFunctionArgs,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { type LinksFunction } from "@vercel/remix";
+import { type LinksFunction, json } from "@vercel/remix";
 import { SpeedInsights } from "@vercel/speed-insights/remix";
-import stylesheet from "~/tailwind.css?url";
 import Navbar from "./components/navbar";
 import Container5xl from "./components/container-5xl";
+import tailwind from "~/tailwind.css?url";
+import typography from "~/typography.css?url";
+import { fetchGithubProfile, type GithubUser } from "./utils";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
+  { rel: "stylesheet", href: tailwind },
+  { rel: "stylesheet", href: typography },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -24,6 +28,25 @@ export const links: LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
 ];
+
+export const loader = async () => {
+  const account_info = await fetchGithubProfile(process.env.GITHUB_USER!);
+
+  return json(account_info);
+};
+
+let loaderCache: GithubUser;
+export const clientLoader = async ({
+  serverLoader,
+}: ClientLoaderFunctionArgs) => {
+  if (loaderCache) {
+    return json(loaderCache);
+  }
+
+  loaderCache = await serverLoader();
+
+  return json(loaderCache);
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

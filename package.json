@@ -9,6 +9,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@icons-pack/react-simple-icons": "^11.2.0",
     "@radix-ui/react-slot": "^1.1.1",
     "@remix-run/node": "2.10.0",
     "@remix-run/react": "2.10.0",
