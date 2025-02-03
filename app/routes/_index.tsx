@@ -7,6 +7,12 @@ import {
   useRouteLoaderData,
 } from "@remix-run/react";
 import { LucideArrowRight } from "~/components/icons/lucide-react";
+import {
+  AppBg,
+  AppReact,
+  AppRemix,
+  AppShadcn,
+} from "~/components/icons/my-icons";
 import SocialAccout from "~/components/social-accounts";
 import { Button } from "~/components/ui/button";
 import {
@@ -74,25 +80,13 @@ export default function Index() {
         </div>
 
         <div className="absolute right-8 grid size-80 opacity-15 blur-sm duration-200 ease-out md:opacity-100 md:blur-none">
-          <img
-            src="/app_react.svg"
-            alt="React logo"
-            title="React"
-            className="absolute left-10 duration-200 ease-in-out hover:-rotate-12 hover:scale-125 active:scale-95"
-          />
-          <img
-            src="/app_remix.svg"
-            alt="Remix logo"
-            title="Remix"
-            className="absolute -right-4 bottom-12 duration-200 ease-in-out hover:-rotate-12 hover:scale-125 active:scale-95"
-          />
-          <img
-            src="/app_shadcn.svg"
-            alt="Shadcn logo"
-            title="Shadcn/UI"
-            className="absolute bottom-6 left-6 duration-200 ease-in-out hover:-rotate-12 hover:scale-125 active:scale-95"
-          />
-          <img src="/app_bg.svg" alt="BG" className="m-auto" />
+          <AppReact className="absolute left-10 duration-200 ease-in-out hover:-rotate-12 hover:scale-125 active:scale-95" />
+
+          <AppRemix className="absolute -right-4 bottom-12 duration-200 ease-in-out hover:-rotate-12 hover:scale-125 active:scale-95" />
+
+          <AppShadcn className="absolute bottom-6 left-6 duration-200 ease-in-out hover:-rotate-12 hover:scale-125 active:scale-95" />
+
+          <AppBg className="m-auto" />
         </div>
       </div>
     </>
