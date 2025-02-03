@@ -1,5 +1,6 @@
 import { HeadersFunction } from "@remix-run/node";
 import {
+  ClientLoaderFunctionArgs,
   Link,
   MetaFunction,
   useLoaderData,
@@ -8,7 +9,11 @@ import {
 import { LucideArrowRight } from "~/components/icons/lucide-react";
 import SocialAccout from "~/components/social-accounts";
 import { Button } from "~/components/ui/button";
-import { fetchGithubSocialAccount, GithubUser } from "~/utils";
+import {
+  fetchGithubSocialAccount,
+  GithubSocialAccounts,
+  GithubUser,
+} from "~/utils";
 
 export const meta: MetaFunction = () => [
   { title: "Naufal Faisal" },
@@ -28,6 +33,19 @@ export const loader = async () => {
   );
 
   return Response.json(social_accounts);
+};
+
+let cacheLoader: GithubSocialAccounts | unknown;
+export const clientLoader = async ({
+  serverLoader,
+}: ClientLoaderFunctionArgs) => {
+  if (cacheLoader) {
+    return cacheLoader;
+  }
+
+  cacheLoader = await serverLoader();
+
+  return Response.json(cacheLoader);
 };
 
 export default function Index() {

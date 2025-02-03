@@ -1,4 +1,5 @@
 import {
+  ClientLoaderFunctionArgs,
   Links,
   Meta,
   Outlet,
@@ -10,7 +11,7 @@ import Navbar from "./components/navbar";
 import Container5xl from "./components/container-5xl";
 import tailwind from "~/tailwind.css?url";
 import typography from "~/typography.css?url";
-import { fetchGithubProfile } from "./utils";
+import { fetchGithubProfile, GithubUser } from "./utils";
 import { HeadersFunction, LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
@@ -36,6 +37,19 @@ export const loader = async () => {
   const account_info = await fetchGithubProfile(process.env.GITHUB_USER!);
 
   return Response.json(account_info);
+};
+
+let cacheLoader: GithubUser | unknown;
+export const clientLoader = async ({
+  serverLoader,
+}: ClientLoaderFunctionArgs) => {
+  if (cacheLoader) {
+    return cacheLoader;
+  }
+
+  cacheLoader = await serverLoader();
+
+  return Response.json(cacheLoader);
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
