@@ -1,15 +1,19 @@
-import Monicon from "@monicon/react";
 import { Button } from "./ui/button";
 import { Link, useLocation } from "@remix-run/react";
 import { useEffect } from "react";
+import { Icon } from "@iconify/react";
 
 const navigation_links = [
-  { link: "/", name: "Beranda", icon: <Monicon name="lucide:house" /> },
-  { link: "/proyek", name: "Proyek", icon: <Monicon name="lucide:pickaxe" /> },
+  {
+    link: "/",
+    name: "Beranda",
+    icon: <Icon icon="lucide:house" />,
+  },
+  { link: "/proyek", name: "Proyek", icon: <Icon icon="lucide:pickaxe" /> },
   {
     link: "/tentang",
     name: "Tentang",
-    icon: <Monicon name="lucide:sparkles" />,
+    icon: <Icon icon="lucide:sparkles" />,
   },
 ];
 

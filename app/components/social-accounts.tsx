@@ -1,16 +1,16 @@
 import { type GithubSocialAccounts } from "~/utils";
-import Monicon from "@monicon/react";
+import { Icon } from "@iconify/react";
 
 const ProviderIcon = ({ provider }: GithubSocialAccounts) => {
   if (provider === "github") {
-    return <Monicon name="simple-icons:github" />;
+    return <Icon icon="simple-icons:github" height={24} />;
   }
 
   if (provider === "instagram") {
-    return <Monicon name="simple-icons:instagram" />;
+    return <Icon icon="simple-icons:instagram" height={24} />;
   }
 
-  return <Monicon name="lucide:globe" />;
+  return <Icon icon="lucide:globe" height={24} />;
 };
 
 export default function SocialAccout({

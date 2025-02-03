@@ -3,7 +3,7 @@ import { type MetaFunction, json } from "@vercel/remix";
 import SocialAccout from "~/components/social-accounts";
 import { Button } from "~/components/ui/button";
 import { fetchGithubSocialAccount, type GithubUser } from "~/utils";
-import Monicon from "@monicon/react";
+import { Icon } from "@iconify/react";
 
 import SRemix from "/app_remix.svg?url";
 import SReact from "/app_react.svg?url";
@@ -46,7 +46,7 @@ export default function Index() {
             <Button variant="outline" asChild>
               <Link to="/tentang">
                 Tentang Saya
-                <Monicon name="lucide:arrow-right" />
+                <Icon icon="lucide:arrow-right" height={24} />
               </Link>
             </Button>
           </div>
