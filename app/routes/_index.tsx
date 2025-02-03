@@ -1,18 +1,9 @@
-import {
-  type ClientLoaderFunctionArgs,
-  Link,
-  useLoaderData,
-  useRouteLoaderData,
-} from "@remix-run/react";
+import { Link, useLoaderData, useRouteLoaderData } from "@remix-run/react";
 import { type MetaFunction, json } from "@vercel/remix";
 import { ArrowRight } from "lucide-react";
 import SocialAccout from "~/components/social-accounts";
 import { Button } from "~/components/ui/button";
-import {
-  fetchGithubSocialAccount,
-  type GithubSocialAccounts,
-  type GithubUser,
-} from "~/utils";
+import { fetchGithubSocialAccount, type GithubUser } from "~/utils";
 
 export const meta: MetaFunction = () => [
   { title: "Naufal Faisal" },
@@ -27,20 +18,11 @@ export const loader = async () => {
     process.env.GITHUB_USER!,
   );
 
-  return json(social_accounts);
-};
-
-let loaderCache: GithubSocialAccounts[];
-export const clientLoader = async ({
-  serverLoader,
-}: ClientLoaderFunctionArgs) => {
-  if (loaderCache) {
-    return json(loaderCache);
-  }
-
-  loaderCache = await serverLoader();
-
-  return json(loaderCache);
+  return json(social_accounts, {
+    headers: {
+      "Cache-Control": "public, max-age=3600",
+    },
+  });
 };
 
 export default function Index() {

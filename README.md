@@ -1,38 +1,31 @@
-# Remix
+# NaufalFaisal707.gihub.io
 
-This directory is a brief example of a [Remix](https://remix.run/docs) site that can be deployed to Vercel with zero configuration.
+## Deskripsi
+website portfolio sederhana yang saya buat untuk patform [vercel](https://vercel.com/)
 
-To get started, run the Remix cli with this template
+## Deploy Dengan Vercel?
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/NaufalFaisal707/NaufalFaisal707.github.io)
 
+## Penggunaan Secara Lokal
+### Konfigurasi ENV
 ```sh
-npx create-remix@latest --template vercel/vercel/examples/remix
+# buat file .env dan tambahkan konfigurasi ini
+
+GITHUB_USER=your_github_username
 ```
 
-## Deploy Your Own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/remix&template=remix)
-
-_Live Example: https://remix-run-template.vercel.app_
-
-You can also deploy using the [Vercel CLI](https://vercel.com/docs/cli):
-
-```sh
-npm i -g vercel
-vercel
-```
-
-## Development
-
-To run your Remix app locally, make sure your project's local dependencies are installed:
-
-```sh
+### Instalasi Depedensi
+```bash
 npm install
 ```
 
-Afterwards, start the Remix development server like so:
-
-```sh
+### Development
+```bash
 npm run dev
 ```
 
-Open up [http://localhost:5173](http://localhost:5173) and you should be ready to go!
+## Tech Stack
+- [React](https://react.dev) + [Remix](https://remix.run/)
+- [vercel](https://vercel.com/)
+- [shadcn-ui](https://ui.shadcn.com/)
+- [tailwindcss](https://tailwindcss.com/)
