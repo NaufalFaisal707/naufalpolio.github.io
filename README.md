@@ -1,4 +1,4 @@
-# NaufalFaisal707.gihub.io
+# NaufalFaisal707.github.io
 
 ## Deskripsi
 website portfolio sederhana yang saya buat untuk patform [vercel](https://vercel.com/)
