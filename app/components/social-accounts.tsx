@@ -1,16 +1,23 @@
-import { type GithubSocialAccounts } from "~/utils";
-import { Icon } from "@iconify/react";
+import { LucideGlobe } from "./icons/lucide-react";
+import { GithubSocialAccounts, Provider } from "~/utils";
+import { SimpleIconsGithub, SimpleIconsInstagram } from "./icons/simple-icons";
 
-const ProviderIcon = ({ provider }: GithubSocialAccounts) => {
+const ProviderIcon = ({
+  provider,
+  className,
+}: {
+  provider: Provider;
+  className?: string;
+}) => {
   if (provider === "github") {
-    return <Icon icon="simple-icons:github" height={24} />;
+    return <SimpleIconsGithub className={className} />;
   }
 
   if (provider === "instagram") {
-    return <Icon icon="simple-icons:instagram" height={24} />;
+    return <SimpleIconsInstagram className={className} />;
   }
 
-  return <Icon icon="lucide:globe" height={24} />;
+  return <LucideGlobe className={className} />;
 };
 
 export default function SocialAccout({
@@ -27,7 +34,7 @@ export default function SocialAccout({
       key={key}
       className="text-neutral-600 duration-150 ease-in-out hover:text-neutral-950"
     >
-      <ProviderIcon url="" provider={provider} />
+      <ProviderIcon provider={provider} className="size-6" />
     </a>
   ));
 }

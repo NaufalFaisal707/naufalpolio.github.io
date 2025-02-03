@@ -48,8 +48,15 @@ export async function fetchGithubProfile(
   return await response.json();
 }
 
+export type Provider =
+  | "github"
+  | "linkedin"
+  | "youtube"
+  | "facebook"
+  | "instagram";
+
 export type GithubSocialAccounts = {
-  provider: "github" | "linkedin" | "youtube" | "facebook" | "instagram";
+  provider: Provider;
   url: string;
 };
 

@@ -1,14 +1,13 @@
-import { Link, useLoaderData, useRouteLoaderData } from "@remix-run/react";
-import { type MetaFunction, json } from "@vercel/remix";
+import {
+  Link,
+  MetaFunction,
+  useLoaderData,
+  useRouteLoaderData,
+} from "@remix-run/react";
+import { LucideArrowRight } from "~/components/icons/lucide-react";
 import SocialAccout from "~/components/social-accounts";
 import { Button } from "~/components/ui/button";
-import { fetchGithubSocialAccount, type GithubUser } from "~/utils";
-import { Icon } from "@iconify/react";
-
-import SRemix from "/app_remix.svg?url";
-import SReact from "/app_react.svg?url";
-import SShadcn from "/app_shadcn.svg?url";
-import SBg from "/app_bg.svg?url";
+import { fetchGithubSocialAccount, GithubUser } from "~/utils";
 
 export const meta: MetaFunction = () => [
   { title: "Naufal Faisal" },
@@ -23,7 +22,7 @@ export const loader = async () => {
     process.env.GITHUB_USER!,
   );
 
-  return json(social_accounts, {
+  return Response.json(social_accounts, {
     headers: {
       "Cache-Control": "public, max-age=3600",
     },
@@ -46,7 +45,7 @@ export default function Index() {
             <Button variant="outline" asChild>
               <Link to="/tentang">
                 Tentang Saya
-                <Icon icon="lucide:arrow-right" height={24} />
+                <LucideArrowRight />
               </Link>
             </Button>
           </div>
@@ -57,24 +56,24 @@ export default function Index() {
 
         <div className="absolute right-8 grid size-80 opacity-15 blur-sm duration-200 ease-out md:opacity-100 md:blur-none">
           <img
-            src={SReact}
+            src="/app_react.svg"
             alt="React logo"
             title="React"
             className="absolute left-10 duration-200 ease-in-out hover:-rotate-12 hover:scale-125 active:scale-95"
           />
           <img
-            src={SRemix}
+            src="/app_remix.svg"
             alt="Remix logo"
             title="Remix"
             className="absolute -right-4 bottom-12 duration-200 ease-in-out hover:-rotate-12 hover:scale-125 active:scale-95"
           />
           <img
-            src={SShadcn}
+            src="/app_shadcn.svg"
             alt="Shadcn logo"
             title="Shadcn/UI"
             className="absolute bottom-6 left-6 duration-200 ease-in-out hover:-rotate-12 hover:scale-125 active:scale-95"
           />
-          <img src={SBg} alt="BG" className="m-auto" />
+          <img src="/app_bg.svg" alt="BG" className="m-auto" />
         </div>
       </div>
     </>

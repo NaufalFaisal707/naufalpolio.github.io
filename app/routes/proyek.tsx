@@ -1,4 +1,4 @@
-import { type MetaFunction } from "@vercel/remix";
+import { MetaFunction } from "@remix-run/react";
 
 export const meta: MetaFunction = () => [{ title: "Proyek | Naufal Faisal" }];
 

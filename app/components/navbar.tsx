@@ -1,19 +1,24 @@
 import { Button } from "./ui/button";
 import { Link, useLocation } from "@remix-run/react";
+
 import { useEffect } from "react";
-import { Icon } from "@iconify/react";
+import {
+  LucideHouse,
+  LucidePickaxe,
+  LucideSparkles,
+} from "./icons/lucide-react";
 
 const navigation_links = [
   {
     link: "/",
     name: "Beranda",
-    icon: <Icon icon="lucide:house" />,
+    icon: <LucideHouse />,
   },
-  { link: "/proyek", name: "Proyek", icon: <Icon icon="lucide:pickaxe" /> },
+  { link: "/proyek", name: "Proyek", icon: <LucidePickaxe /> },
   {
     link: "/tentang",
     name: "Tentang",
-    icon: <Icon icon="lucide:sparkles" />,
+    icon: <LucideSparkles />,
   },
 ];
 
@@ -60,7 +65,7 @@ export default function Navbar({ className }: { className?: string }) {
           <Link to={link}>
             {icon}
             {location.pathname === link && (
-              <span className="block animate-fade-right animate-duration-200 animate-ease-in-out md:hidden">
+              <span className="animate-fade-right animate-duration-200 animate-ease-in-out block md:hidden">
                 {name}
               </span>
             )}

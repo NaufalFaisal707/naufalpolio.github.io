@@ -5,13 +5,13 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { type LinksFunction, json } from "@vercel/remix";
 import { SpeedInsights } from "@vercel/speed-insights/remix";
 import Navbar from "./components/navbar";
 import Container5xl from "./components/container-5xl";
 import tailwind from "~/tailwind.css?url";
 import typography from "~/typography.css?url";
 import { fetchGithubProfile } from "./utils";
+import { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwind },
@@ -31,7 +31,7 @@ export const links: LinksFunction = () => [
 export const loader = async () => {
   const account_info = await fetchGithubProfile(process.env.GITHUB_USER!);
 
-  return json(account_info, {
+  return Response.json(account_info, {
     headers: {
       "Cache-Control": "public, max-age=3600",
     },
