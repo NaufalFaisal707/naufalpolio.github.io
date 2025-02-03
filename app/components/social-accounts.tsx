@@ -1,6 +1,6 @@
-import { SiGithub, SiInstagram } from "@icons-pack/react-simple-icons";
 import { Globe2 } from "lucide-react";
 import { type GithubSocialAccounts } from "~/utils";
+import { SiGithub, SiInstagram } from "@icons-pack/react-simple-icons";
 
 const ProviderIcon = ({ provider }: GithubSocialAccounts) => {
   if (provider === "github") {
