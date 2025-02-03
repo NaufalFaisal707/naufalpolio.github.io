@@ -1,17 +1,16 @@
-import { Globe2 } from "lucide-react";
 import { type GithubSocialAccounts } from "~/utils";
-import { SiGithub, SiInstagram } from "@icons-pack/react-simple-icons";
+import Monicon from "@monicon/react";
 
 const ProviderIcon = ({ provider }: GithubSocialAccounts) => {
   if (provider === "github") {
-    return <SiGithub />;
+    return <Monicon name="simple-icons:github" />;
   }
 
   if (provider === "instagram") {
-    return <SiInstagram />;
+    return <Monicon name="simple-icons:instagram" />;
   }
 
-  return <Globe2 />;
+  return <Monicon name="lucide:globe" />;
 };
 
 export default function SocialAccout({

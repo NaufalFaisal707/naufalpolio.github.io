@@ -1,9 +1,9 @@
 import { Link, useLoaderData, useRouteLoaderData } from "@remix-run/react";
 import { type MetaFunction, json } from "@vercel/remix";
-import { ArrowRight } from "lucide-react";
 import SocialAccout from "~/components/social-accounts";
 import { Button } from "~/components/ui/button";
 import { fetchGithubSocialAccount, type GithubUser } from "~/utils";
+import Monicon from "@monicon/react";
 
 import SRemix from "/app_remix.svg?url";
 import SReact from "/app_react.svg?url";
@@ -46,7 +46,7 @@ export default function Index() {
             <Button variant="outline" asChild>
               <Link to="/tentang">
                 Tentang Saya
-                <ArrowRight />
+                <Monicon name="lucide:arrow-right" />
               </Link>
             </Button>
           </div>

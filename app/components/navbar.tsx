@@ -1,12 +1,16 @@
+import Monicon from "@monicon/react";
 import { Button } from "./ui/button";
 import { Link, useLocation } from "@remix-run/react";
 import { useEffect } from "react";
-import { House, Pickaxe, Sparkles } from "lucide-react";
 
 const navigation_links = [
-  { link: "/", name: "Beranda", icon: House },
-  { link: "/proyek", name: "Proyek", icon: Pickaxe },
-  { link: "/tentang", name: "Tentang", icon: Sparkles },
+  { link: "/", name: "Beranda", icon: <Monicon name="lucide:house" /> },
+  { link: "/proyek", name: "Proyek", icon: <Monicon name="lucide:pickaxe" /> },
+  {
+    link: "/tentang",
+    name: "Tentang",
+    icon: <Monicon name="lucide:sparkles" />,
+  },
 ];
 
 export default function Navbar({ className }: { className?: string }) {
@@ -41,7 +45,7 @@ export default function Navbar({ className }: { className?: string }) {
 
   return (
     <div className={className}>
-      {navigation_links.map(({ link, name, icon: Icon }, key) => (
+      {navigation_links.map(({ link, name, icon }, key) => (
         <Button
           id={link}
           variant="link"
@@ -50,7 +54,7 @@ export default function Navbar({ className }: { className?: string }) {
           className="z-20 flex min-h-fit place-items-center text-base"
         >
           <Link to={link}>
-            <Icon />
+            {icon}
             {location.pathname === link && (
               <span className="block animate-fade-right animate-duration-200 animate-ease-in-out md:hidden">
                 {name}

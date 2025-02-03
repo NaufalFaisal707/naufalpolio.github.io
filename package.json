@@ -9,7 +9,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@icons-pack/react-simple-icons": "^11.2.0",
+    "@monicon/react": "^1.2.2",
+    "@monicon/vite": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
     "@remix-run/node": "2.10.0",
     "@remix-run/react": "2.10.0",
@@ -18,13 +19,16 @@
     "@vercel/speed-insights": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "i": "^0.3.7",
     "isbot": "^4",
-    "lucide-react": "^0.469.0",
+    "npm": "^11.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^3.0.1"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.25",
+    "@iconify-json/simple-icons": "^1.2.23",
     "@remix-run/dev": "2.10.0",
     "@remix-run/eslint-config": "2.10.0",
     "@types/react": "^18.2.20",
