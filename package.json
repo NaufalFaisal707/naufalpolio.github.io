@@ -15,6 +15,7 @@
     "@remix-run/node": "^2.15.3",
     "@remix-run/react": "^2.15.3",
     "@remix-run/serve": "^2.15.3",
+    "@vercel/remix": "^2.15.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "isbot": "^4.1.0",

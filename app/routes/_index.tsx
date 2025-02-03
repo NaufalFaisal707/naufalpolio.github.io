@@ -1,3 +1,4 @@
+import { HeadersFunction } from "@remix-run/node";
 import {
   Link,
   MetaFunction,
@@ -17,16 +18,16 @@ export const meta: MetaFunction = () => [
   },
 ];
 
+export const headers: HeadersFunction = () => ({
+  "Cache-Control": "public, max-age=3600",
+});
+
 export const loader = async () => {
   const social_accounts = await fetchGithubSocialAccount(
     process.env.GITHUB_USER!,
   );
 
-  return Response.json(social_accounts, {
-    headers: {
-      "Cache-Control": "public, max-age=3600",
-    },
-  });
+  return Response.json(social_accounts);
 };
 
 export default function Index() {

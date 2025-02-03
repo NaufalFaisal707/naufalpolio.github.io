@@ -11,7 +11,7 @@ import Container5xl from "./components/container-5xl";
 import tailwind from "~/tailwind.css?url";
 import typography from "~/typography.css?url";
 import { fetchGithubProfile } from "./utils";
-import { LinksFunction } from "@remix-run/node";
+import { HeadersFunction, LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwind },
@@ -28,14 +28,14 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export const headers: HeadersFunction = () => ({
+  "Cache-Control": "public, max-age=3600",
+});
+
 export const loader = async () => {
   const account_info = await fetchGithubProfile(process.env.GITHUB_USER!);
 
-  return Response.json(account_info, {
-    headers: {
-      "Cache-Control": "public, max-age=3600",
-    },
-  });
+  return Response.json(account_info);
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
