@@ -60,8 +60,13 @@
 
 @layer base {
   * {
-    @apply scroll-smooth border-border;
+    @apply border-border;
   }
+
+  html {
+    @apply scroll-pt-28 scroll-smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
   }

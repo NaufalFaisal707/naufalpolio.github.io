@@ -78,7 +78,7 @@ export default function App() {
       <nav className="sticky top-0 z-50 grid h-24 w-full place-content-center bg-white/90 backdrop-blur">
         <Navbar className="relative flex rounded-md" />
       </nav>
-      <Container5xl className="space-y-4">
+      <Container5xl className="scroll-p-96 space-y-4 scroll-smooth">
         <Outlet />
       </Container5xl>
     </>
