@@ -1,5 +1,97 @@
 import { SVGProps } from "react";
 
+export function LucideArrowDown(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M12 5v14m7-7l-7 7l-7-7"
+      ></path>
+    </svg>
+  );
+}
+
+export function LucideRepeat2(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      >
+        <path d="m2 9l3-3l3 3"></path>
+        <path d="M13 18H7a2 2 0 0 1-2-2V6m17 9l-3 3l-3-3"></path>
+        <path d="M11 6h6a2 2 0 0 1 2 2v10"></path>
+      </g>
+    </svg>
+  );
+}
+
+export function LucideServer(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      >
+        <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
+        <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
+        <path d="M6 6h.01M6 18h.01"></path>
+      </g>
+    </svg>
+  );
+}
+
+export function LucideKeyRound(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      >
+        <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
+        <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+      </g>
+    </svg>
+  );
+}
+
 export function LucideGlobe(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

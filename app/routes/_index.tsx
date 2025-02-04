@@ -6,7 +6,13 @@ import {
   useLoaderData,
   useRouteLoaderData,
 } from "@remix-run/react";
-import { LucideArrowRight } from "~/components/icons/lucide-react";
+import {
+  LucideArrowDown,
+  LucideArrowRight,
+  LucideKeyRound,
+  LucideRepeat2,
+  LucideServer,
+} from "~/components/icons/lucide-react";
 import {
   AppBg,
   AppReact,
@@ -20,14 +26,7 @@ import {
   GithubSocialAccounts,
   GithubUser,
 } from "~/utils";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
-import { Badge } from "~/components/ui/badge";
+import { Card, CardContent, CardHeader } from "~/components/ui/card";
 
 export const meta: MetaFunction = () => [
   { title: "Naufal Faisal" },
@@ -74,10 +73,16 @@ export default function Index() {
         <div className="z-10 grid max-w-[30rem] gap-2">
           <h1 className="font-serif">{name || "Unkown Name"}</h1>
           <p className="text-neutral-600">{bio || "Unkown Bio"}</p>
-          <div className="my-4">
+          <div className="my-4 space-x-2">
+            <Button asChild>
+              <Link to="#intro">
+                Selengkapnya
+                <LucideArrowDown />
+              </Link>
+            </Button>
             <Button variant="outline" asChild>
               <Link to="/tentang">
-                About Me
+                Tentang Saya
                 <LucideArrowRight />
               </Link>
             </Button>
@@ -95,60 +100,48 @@ export default function Index() {
         </div>
       </div>
 
-      <div className="relative mx-4 flex h-[calc(100svh_-_12rem)] min-h-fit flex-col justify-center gap-24">
+      <div
+        id="intro"
+        className="relative mx-4 flex h-[calc(100svh_-_12rem)] min-h-fit flex-col justify-center gap-24"
+      >
         <div className="grid gap-4 text-center">
           <h1>Efisiensi &amp; Keamanan</h1>
           <p>
-            Saya belajar bagaimana fokus pada efisiensi dan keamanan untuk
-            konten yang akan ditangani oleh server dan klien secara bersamaan.
+            Langkah yang saya lakukan untuk menjaga Efisiensi dan Keamanan dari
+            sisi server dan client di waktu yang sama.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <Card>
             <CardHeader>
-              <CardTitle>Autentikasi</CardTitle>
-              <CardDescription className="flex flex-wrap gap-1">
-                <Badge>Remix</Badge>
-                <Badge>React</Badge>
-                <Badge>Prisma</Badge>
-                <Badge>PostgreSQL</Badge>
-                <Badge>jwt</Badge>
-              </CardDescription>
+              <LucideKeyRound className="size-12" />
             </CardHeader>
             <CardContent>
-              <p>
-                Bagaimana melakukan autentikasi pengguna dengan Token-Based
-                Authentication.
+              <h3>Authenticator</h3>
+              <p className="text-neutral-600">
+                Token-Based Authentication dengan Remix.
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Server Action &amp; Loader</CardTitle>
-              <CardDescription className="flex flex-wrap gap-1">
-                <Badge>Remix</Badge>
-                <Badge>React</Badge>
-              </CardDescription>
+              <LucideServer className="size-12" />
             </CardHeader>
             <CardContent>
-              <p>
-                Bagaimana cara server action dan loader bekerja pada framework
-                Remix?.
+              <h3>Server Action &amp; Loader</h3>
+              <p className="text-neutral-600">
+                Menggunakan server Action dan Loader pada Remix.
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Peformance</CardTitle>
-              <CardDescription className="flex flex-wrap gap-1">
-                <Badge>Remix</Badge>
-                <Badge>React</Badge>
-              </CardDescription>
+              <LucideRepeat2 className="size-12" />
             </CardHeader>
             <CardContent>
-              <p>
-                Hasil perbandingan peforma dari metode SSR dan SPA dengan
-                framework Remix.
+              <h3>Caching</h3>
+              <p className="text-neutral-600">
+                Melakukan Caching data pada Remix.
               </p>
             </CardContent>
           </Card>
