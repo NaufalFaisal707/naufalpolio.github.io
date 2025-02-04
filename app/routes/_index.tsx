@@ -73,7 +73,7 @@ export default function Index() {
         <div className="z-10 grid max-w-[30rem] gap-2">
           <h1 className="font-serif">{name || "Unkown Name"}</h1>
           <p className="text-neutral-600">{bio || "Unkown Bio"}</p>
-          <div className="my-4 space-x-2">
+          <div className="my-4 flex flex-wrap-reverse gap-2">
             <Button asChild>
               <Link to="#intro">
                 Selengkapnya

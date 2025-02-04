@@ -64,7 +64,7 @@
   }
 
   html {
-    @apply scroll-pt-28 scroll-smooth;
+    @apply scroll-pt-[6rem] scroll-smooth;
   }
 
   body {
