@@ -107,7 +107,7 @@ export default function Index() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <Card>
             <CardHeader>
-              <CardTitle>User Autentication</CardTitle>
+              <CardTitle>User Authentication</CardTitle>
               <CardDescription>Card Description</CardDescription>
             </CardHeader>
             <CardContent>
