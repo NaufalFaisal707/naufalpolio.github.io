@@ -11,13 +11,13 @@ import {
 const navigation_links = [
   {
     link: "/",
-    name: "Beranda",
+    name: "Home",
     icon: <LucideHouse />,
   },
-  { link: "/proyek", name: "Proyek", icon: <LucidePickaxe /> },
+  { link: "/projects", name: "Projects", icon: <LucidePickaxe /> },
   {
-    link: "/tentang",
-    name: "Tentang",
+    link: "/about",
+    name: "About",
     icon: <LucideSparkles />,
   },
 ];
