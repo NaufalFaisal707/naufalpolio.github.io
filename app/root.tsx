@@ -54,7 +54,7 @@ export const clientLoader = async ({
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
         <Meta />
         <meta charSet="utf-8" />
