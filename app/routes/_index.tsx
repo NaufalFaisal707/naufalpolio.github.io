@@ -22,11 +22,14 @@ import {
 import SocialAccout from "~/components/social-accounts";
 import { Button } from "~/components/ui/button";
 import {
+  fetchGithubRepos,
   fetchGithubSocialAccount,
+  GithubRepos,
   GithubSocialAccounts,
   GithubUser,
 } from "~/utils";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
+import ProyekUnggulan from "~/components/proyek-unggulan";
 
 export const meta: MetaFunction = () => [
   { title: "Naufal Faisal" },
@@ -41,11 +44,17 @@ export const headers: HeadersFunction = () => ({
 });
 
 export const loader = async () => {
-  const social_accounts = await fetchGithubSocialAccount(
-    process.env.GITHUB_USER!,
-  );
+  const [social_accounts, repos] = await Promise.all([
+    fetchGithubSocialAccount(process.env.GITHUB_USER!),
+    (await fetchGithubRepos(process.env.GITHUB_USER!)).filter((f) =>
+      f.topics.includes("featured-project"),
+    ),
+  ]);
 
-  return Response.json(social_accounts);
+  return Response.json({
+    social_accounts,
+    repos,
+  });
 };
 
 let cacheLoader: GithubSocialAccounts | unknown;
@@ -63,9 +72,14 @@ export const clientLoader = async ({
 
 export default function Index() {
   const routeLoaderData = useRouteLoaderData("root") as GithubUser;
-  const loaderData = useLoaderData<typeof loader>();
+  const loaderData = useLoaderData() as {
+    social_accounts: GithubSocialAccounts[];
+    repos: GithubRepos[];
+  };
 
   const { name, bio } = routeLoaderData;
+
+  const { social_accounts, repos } = loaderData;
 
   return (
     <>
@@ -88,7 +102,7 @@ export default function Index() {
             </Button>
           </div>
           <div className="flex gap-4">
-            <SocialAccout social_account={loaderData} />
+            <SocialAccout social_account={social_accounts} />
           </div>
         </div>
 
@@ -102,7 +116,7 @@ export default function Index() {
 
       <div
         id="intro"
-        className="relative mx-4 flex h-[calc(100svh_-_12rem)] min-h-fit flex-col justify-center gap-24"
+        className="relative mx-4 flex min-h-fit flex-col justify-center gap-24"
       >
         <div className="grid gap-4 text-center">
           <h1>Efisiensi &amp; Keamanan</h1>
@@ -147,6 +161,26 @@ export default function Index() {
           </Card>
         </div>
       </div>
+
+      <div className="relative mx-4 h-[calc(100svh_-_12rem)] min-h-fit">
+        <div className="mb-24 grid gap-4 text-center">
+          <h1>Proyek Unggulan</h1>
+          <p>Proyek yang pernah saya buat.</p>
+        </div>
+        <div className="grid grid-cols-1 gap-4">
+          <ProyekUnggulan repos={repos} />
+        </div>
+        <div className="mt-4 flex justify-center">
+          <Button variant="ghost" asChild>
+            <Link to="/proyek">
+              Proyek Lainya
+              <LucideArrowRight />
+            </Link>
+          </Button>
+        </div>
+      </div>
+
+      <div />
     </>
   );
 }
