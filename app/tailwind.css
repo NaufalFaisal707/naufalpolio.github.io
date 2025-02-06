@@ -60,14 +60,26 @@
 
 @layer base {
   * {
-    @apply border-border;
-  }
-
-  html {
-    @apply scroll-pt-[6rem] scroll-smooth;
+    @apply scroll-smooth border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  .fade-in {
+    animation: ease-out animate-in;
+    animation-timeline: view();
+  }
+
+  @keyframes animate-in {
+    entry 0% {
+      opacity: 0;
+      scale: 0.9;
+    }
+    entry 50% {
+      opacity: 1;
+      scale: 1;
+    }
   }
 }

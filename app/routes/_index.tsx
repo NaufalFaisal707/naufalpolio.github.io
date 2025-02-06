@@ -4,10 +4,8 @@ import {
   Link,
   MetaFunction,
   useLoaderData,
-  useRouteLoaderData,
 } from "@remix-run/react";
 import {
-  LucideArrowDown,
   LucideArrowRight,
   LucideKeyRound,
   LucideRepeat2,
@@ -22,6 +20,7 @@ import {
 import SocialAccout from "~/components/social-accounts";
 import { Button } from "~/components/ui/button";
 import {
+  fetchGithubProfile,
   fetchGithubRepos,
   fetchGithubSocialAccount,
   GithubRepos,
@@ -44,7 +43,8 @@ export const headers: HeadersFunction = () => ({
 });
 
 export const loader = async () => {
-  const [social_accounts, repos] = await Promise.all([
+  const [github_profile, social_accounts, repos] = await Promise.all([
+    fetchGithubProfile(process.env.GITHUB_USER!),
     fetchGithubSocialAccount(process.env.GITHUB_USER!),
     (await fetchGithubRepos(process.env.GITHUB_USER!)).filter((f) =>
       f.topics.includes("featured-project"),
@@ -52,6 +52,7 @@ export const loader = async () => {
   ]);
 
   return Response.json({
+    github_profile,
     social_accounts,
     repos,
   });
@@ -71,29 +72,23 @@ export const clientLoader = async ({
 };
 
 export default function Index() {
-  const routeLoaderData = useRouteLoaderData("root") as GithubUser;
   const loaderData = useLoaderData() as {
+    github_profile: GithubUser;
     social_accounts: GithubSocialAccounts[];
     repos: GithubRepos[];
   };
 
-  const { name, bio } = routeLoaderData;
+  const { github_profile, social_accounts, repos } = loaderData;
 
-  const { social_accounts, repos } = loaderData;
+  const { name, bio } = github_profile;
 
   return (
     <>
-      <div className="relative mx-4 flex h-[calc(100svh_-_12rem)] min-h-fit items-center">
+      <div className="relative mx-4 flex h-[calc(100svh_-_12rem)] min-h-fit items-center fade-in">
         <div className="z-10 grid max-w-[30rem] gap-2">
           <h1 className="font-serif">{name || "Unkown Name"}</h1>
           <p className="text-neutral-600">{bio || "Unkown Bio"}</p>
           <div className="my-4 flex flex-wrap-reverse gap-2">
-            <Button asChild>
-              <Link to="#intro">
-                Selengkapnya
-                <LucideArrowDown />
-              </Link>
-            </Button>
             <Button variant="outline" asChild>
               <Link to="/tentang">
                 Tentang Saya
@@ -114,10 +109,7 @@ export default function Index() {
         </div>
       </div>
 
-      <div
-        id="intro"
-        className="relative mx-4 flex min-h-fit flex-col justify-center gap-24"
-      >
+      <div className="relative mx-4 flex min-h-fit flex-col justify-center gap-24 fade-in">
         <div className="grid gap-4 text-center">
           <h1>Efisiensi &amp; Keamanan</h1>
           <p>
@@ -162,7 +154,7 @@ export default function Index() {
         </div>
       </div>
 
-      <div className="relative mx-4 h-[calc(100svh_-_12rem)] min-h-fit">
+      <div className="relative mx-4 h-[calc(100svh_-_12rem)] min-h-fit fade-in">
         <div className="mb-24 grid gap-4 text-center">
           <h1>Proyek Unggulan</h1>
           <p>Proyek yang pernah saya buat.</p>
@@ -171,7 +163,7 @@ export default function Index() {
           <ProyekUnggulan repos={repos} />
         </div>
         <div className="mt-4 flex justify-center">
-          <Button variant="ghost" asChild>
+          <Button variant="outline" asChild>
             <Link to="/proyek">
               Proyek Lainya
               <LucideArrowRight />
@@ -180,7 +172,46 @@ export default function Index() {
         </div>
       </div>
 
-      <div />
+      <div className="relative mx-4 h-[calc(100svh_-_12rem)] min-h-fit fade-in">
+        <div className="mb-24 grid gap-4 text-center">
+          <h1>My Kisah</h1>
+          <p>My kisah berdasarkan kisah my</p>
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <Card>
+            <CardHeader>
+              <h1>2025</h1>
+            </CardHeader>
+            <CardContent>
+              <p className="text-neutral-600">My Kisah</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <h1>2024</h1>
+            </CardHeader>
+            <CardContent>
+              <p className="text-neutral-600">My Kisah</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <h1>2023</h1>
+            </CardHeader>
+            <CardContent>
+              <p className="text-neutral-600">My Kisah</p>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="mt-4 flex justify-center">
+          <Button variant="outline" asChild>
+            <Link to="/proyek">
+              Selengkapnya
+              <LucideArrowRight />
+            </Link>
+          </Button>
+        </div>
+      </div>
     </>
   );
 }

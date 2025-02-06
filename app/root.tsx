@@ -1,5 +1,4 @@
 import {
-  ClientLoaderFunctionArgs,
   Links,
   Meta,
   Outlet,
@@ -11,8 +10,7 @@ import Navbar from "./components/navbar";
 import Container5xl from "./components/container-5xl";
 import tailwind from "~/tailwind.css?url";
 import typography from "~/typography.css?url";
-import { fetchGithubProfile, GithubUser } from "./utils";
-import { HeadersFunction, LinksFunction } from "@remix-run/node";
+import { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwind },
@@ -28,29 +26,6 @@ export const links: LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
 ];
-
-export const headers: HeadersFunction = () => ({
-  "Cache-Control": "public, max-age=3600",
-});
-
-export const loader = async () => {
-  const account_info = await fetchGithubProfile(process.env.GITHUB_USER!);
-
-  return Response.json(account_info);
-};
-
-let cacheLoader: GithubUser | unknown;
-export const clientLoader = async ({
-  serverLoader,
-}: ClientLoaderFunctionArgs) => {
-  if (cacheLoader) {
-    return cacheLoader;
-  }
-
-  cacheLoader = await serverLoader();
-
-  return Response.json(cacheLoader);
-};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -78,7 +53,7 @@ export default function App() {
       <nav className="sticky top-0 z-50 grid h-24 w-full place-content-center bg-white/90 backdrop-blur">
         <Navbar className="relative flex rounded-md" />
       </nav>
-      <Container5xl className="scroll-p-96 space-y-24 scroll-smooth">
+      <Container5xl className="space-y-24">
         <Outlet />
       </Container5xl>
     </>

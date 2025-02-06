@@ -10,6 +10,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@mdx-js/rollup": "^3.1.0",
     "@radix-ui/react-slot": "^1.1.1",
     "@remix-run/node": "^2.15.3",
     "@remix-run/react": "^2.15.3",
@@ -25,12 +26,14 @@
   },
   "devDependencies": {
     "@remix-run/dev": "^2.15.3",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "@vercel/speed-insights": "^1.1.0",
     "autoprefixer": "^10.4.19",
+    "dotenv": "^16.4.7",
     "eslint": "^8.38.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.28.1",

@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
 import { vercelPreset } from "@vercel/remix/vite";
+import mdx from "@mdx-js/rollup";
 
 declare module "@remix-run/node" {
   interface Future {
@@ -17,6 +18,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    mdx(),
     remix({
       presets: [vercelPreset()],
       future: {
