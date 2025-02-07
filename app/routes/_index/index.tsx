@@ -17,7 +17,7 @@ import {
   AppRemix,
   AppShadcn,
 } from "~/components/icons/my-icons";
-import SocialAccout from "~/components/social-accounts";
+import SocialAccout from "./social-accounts";
 import { Button } from "~/components/ui/button";
 import {
   fetchGithubProfile,
@@ -25,7 +25,7 @@ import {
   fetchGithubSocialAccount,
 } from "~/utils/fetch-github.server";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
-import ProyekUnggulan from "~/components/proyek-unggulan";
+import ProyekUnggulan from "./proyek-unggulan";
 import Container5xl from "~/components/container-5xl";
 import typography from "~/typography.css?url";
 
@@ -94,7 +94,7 @@ export default function Index() {
             </Button>
           </div>
           <div className="flex gap-4">
-            <SocialAccout social_account={social_accounts} />
+            <SocialAccout social_accounts={social_accounts} />
           </div>
         </div>
 

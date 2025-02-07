@@ -1,12 +1,15 @@
-import { LucideGlobe } from "./icons/lucide-react";
-import { GithubSocialAccounts, Provider } from "~/utils";
-import { SimpleIconsGithub, SimpleIconsInstagram } from "./icons/simple-icons";
+import { LucideGlobe } from "~/components/icons/lucide-react";
+import {
+  SimpleIconsGithub,
+  SimpleIconsInstagram,
+} from "~/components/icons/simple-icons";
+import { fetchGithubSocialAccount } from "~/utils/fetch-github.server";
 
 const ProviderIcon = ({
   provider,
   className,
 }: {
-  provider: Provider;
+  provider: string;
   className?: string;
 }) => {
   if (provider === "github") {
@@ -21,11 +24,11 @@ const ProviderIcon = ({
 };
 
 export default function SocialAccout({
-  social_account,
+  social_accounts,
 }: {
-  social_account: GithubSocialAccounts[];
+  social_accounts: Awaited<ReturnType<typeof fetchGithubSocialAccount>>;
 }) {
-  return social_account.map(({ provider, url }, key) => (
+  return social_accounts.map(({ provider, url }, key) => (
     <a
       href={url}
       target="_blank"

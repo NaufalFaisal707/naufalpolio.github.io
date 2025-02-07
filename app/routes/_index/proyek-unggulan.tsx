@@ -1,9 +1,13 @@
-import { GithubRepos } from "~/utils";
-import { Card, CardContent, CardHeader } from "./ui/card";
-import { Button } from "./ui/button";
-import { LucideArrowRight } from "./icons/lucide-react";
+import { Card, CardContent, CardHeader } from "~/components/ui/card";
+import { Button } from "~/components/ui/button";
+import { LucideArrowRight } from "~/components/icons/lucide-react";
+import { fetchGithubRepos } from "~/utils/fetch-github.server";
 
-export default function ProyekUnggulan({ repos }: { repos: GithubRepos[] }) {
+export default function ProyekUnggulan({
+  repos,
+}: {
+  repos: Awaited<ReturnType<typeof fetchGithubRepos>>;
+}) {
   return repos.map(({ name, description, html_url }, key) => (
     <Card key={key}>
       <CardHeader>
