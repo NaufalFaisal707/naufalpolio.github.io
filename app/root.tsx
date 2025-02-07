@@ -7,14 +7,11 @@ import {
 } from "@remix-run/react";
 import { SpeedInsights } from "@vercel/speed-insights/remix";
 import Navbar from "./components/navbar";
-import Container5xl from "./components/container-5xl";
 import tailwind from "~/tailwind.css?url";
-import typography from "~/typography.css?url";
 import { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwind },
-  { rel: "stylesheet", href: typography },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -53,9 +50,7 @@ export default function App() {
       <nav className="sticky top-0 z-50 grid h-24 w-full place-content-center bg-white/90 backdrop-blur">
         <Navbar className="relative flex rounded-md" />
       </nav>
-      <Container5xl className="space-y-24">
-        <Outlet />
-      </Container5xl>
+      <Outlet />
     </>
   );
 }

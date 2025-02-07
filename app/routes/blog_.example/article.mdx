@@ -1,0 +1,44 @@
+# Building a Simple Blog with Tailwind Typography
+
+Creating beautiful articles with rich typography doesn't have to be hard. Let's build a simple blog using Tailwind CSS and its typography plugin.
+
+## Setup
+
+First install the required dependencies:
+
+```bash
+npm install -D @tailwindcss/typography
+```
+
+Then add the typography plugin to your `tailwind.config.js`:
+
+```js
+module.exports = {
+  theme: {
+    // ...
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+}
+```
+
+## Usage
+
+Simply wrap your markdown content in a div with the `prose` class:
+
+```html
+<article class="prose lg:prose-xl">
+  <!-- Your markdown content here -->
+</article>
+```
+
+Now your content will be beautifully styled with proper typography including:
+
+- Balanced headings
+- Proper spacing
+- Optimized line lengths
+- Nice link styles
+- Beautiful lists and blockquotes
+
+The typography plugin handles all the styling details so you can focus on writing great content.

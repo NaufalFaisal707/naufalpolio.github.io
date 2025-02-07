@@ -1,4 +1,4 @@
-import { HeadersFunction } from "@remix-run/node";
+import { HeadersFunction, LinksFunction } from "@remix-run/node";
 import {
   ClientLoaderFunctionArgs,
   Link,
@@ -23,12 +23,11 @@ import {
   fetchGithubProfile,
   fetchGithubRepos,
   fetchGithubSocialAccount,
-  GithubRepos,
-  GithubSocialAccounts,
-  GithubUser,
-} from "~/utils";
+} from "~/utils/fetch-github.server";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import ProyekUnggulan from "~/components/proyek-unggulan";
+import Container5xl from "~/components/container-5xl";
+import typography from "~/typography.css?url";
 
 export const meta: MetaFunction = () => [
   { title: "Naufal Faisal" },
@@ -38,27 +37,29 @@ export const meta: MetaFunction = () => [
   },
 ];
 
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: typography },
+];
+
 export const headers: HeadersFunction = () => ({
   "Cache-Control": "public, max-age=3600",
 });
 
 export const loader = async () => {
-  const [github_profile, social_accounts, repos] = await Promise.all([
-    fetchGithubProfile(process.env.GITHUB_USER!),
-    fetchGithubSocialAccount(process.env.GITHUB_USER!),
-    (await fetchGithubRepos(process.env.GITHUB_USER!)).filter((f) =>
-      f.topics.includes("featured-project"),
-    ),
-  ]);
+  const github_profile = await fetchGithubProfile();
+  const social_accounts = await fetchGithubSocialAccount();
+  const repos = (await fetchGithubRepos()).filter((f) =>
+    f.topics?.includes("featured-project"),
+  );
 
-  return Response.json({
+  return {
     github_profile,
     social_accounts,
     repos,
-  });
+  };
 };
 
-let cacheLoader: GithubSocialAccounts | unknown;
+let cacheLoader: typeof loader | unknown;
 export const clientLoader = async ({
   serverLoader,
 }: ClientLoaderFunctionArgs) => {
@@ -68,22 +69,18 @@ export const clientLoader = async ({
 
   cacheLoader = await serverLoader();
 
-  return Response.json(cacheLoader);
+  return cacheLoader;
 };
 
 export default function Index() {
-  const loaderData = useLoaderData() as {
-    github_profile: GithubUser;
-    social_accounts: GithubSocialAccounts[];
-    repos: GithubRepos[];
-  };
+  const loaderData = useLoaderData<typeof loader>();
 
   const { github_profile, social_accounts, repos } = loaderData;
 
   const { name, bio } = github_profile;
 
   return (
-    <>
+    <Container5xl className="space-y-24">
       <div className="relative mx-4 flex h-[calc(100svh_-_12rem)] min-h-fit items-center fade-in">
         <div className="z-10 grid max-w-[30rem] gap-2">
           <h1 className="font-serif">{name || "Unkown Name"}</h1>
@@ -212,6 +209,6 @@ export default function Index() {
           </Button>
         </div>
       </div>
-    </>
+    </Container5xl>
   );
 }

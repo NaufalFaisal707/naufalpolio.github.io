@@ -34,20 +34,6 @@ export type GithubUser = {
   updated_at: string;
 };
 
-export async function fetchGithubProfile(
-  username: string,
-): Promise<GithubUser> {
-  const response = await fetch("https://api.github.com/users/" + username);
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to fetch Github profile: ${response.status} ${response.statusText}`,
-    );
-  }
-
-  return await response.json();
-}
-
 export type GithubRepos = {
   id: number;
   node_id: string;
@@ -136,22 +122,6 @@ export type GithubRepos = {
   default_branch: string;
 };
 
-export async function fetchGithubRepos(
-  username: string,
-): Promise<GithubRepos[]> {
-  const response = await fetch(
-    "https://api.github.com/users/" + username + "/repos",
-  );
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to fetch Github repos: ${response.status} ${response.statusText}`,
-    );
-  }
-
-  return await response.json();
-}
-
 export type Provider =
   | "github"
   | "linkedin"
@@ -163,25 +133,3 @@ export type GithubSocialAccounts = {
   provider: Provider;
   url: string;
 };
-
-export async function fetchGithubSocialAccount(
-  username: string,
-): Promise<GithubSocialAccounts[]> {
-  const response = await fetch(
-    "https://api.github.com/users/" + username + "/social_accounts",
-  );
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to fetch Github social accounts: ${response.status} ${response.statusText}`,
-    );
-  }
-
-  return [
-    {
-      provider: "github",
-      url: "https://github.com/" + username,
-    },
-    ...(await response.json()),
-  ];
-}

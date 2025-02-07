@@ -4,6 +4,7 @@ import { Link, useLocation } from "@remix-run/react";
 import { useEffect } from "react";
 import {
   LucideHouse,
+  LucideNotebookTabs,
   LucidePickaxe,
   LucideSparkles,
 } from "./icons/lucide-react";
@@ -15,6 +16,11 @@ const navigation_links = [
     icon: <LucideHouse />,
   },
   { link: "/proyek", name: "Proyek", icon: <LucidePickaxe /> },
+  {
+    link: "/blog",
+    name: "Blog",
+    icon: <LucideNotebookTabs />,
+  },
   {
     link: "/tentang",
     name: "Tentang",

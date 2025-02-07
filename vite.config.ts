@@ -4,6 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
 import { vercelPreset } from "@vercel/remix/vite";
 import mdx from "@mdx-js/rollup";
+import rehypeStarryNight from "rehype-starry-night";
 
 declare module "@remix-run/node" {
   interface Future {
@@ -18,7 +19,9 @@ export default defineConfig({
     },
   },
   plugins: [
-    mdx(),
+    mdx({
+      rehypePlugins: [rehypeStarryNight],
+    }),
     remix({
       presets: [vercelPreset()],
       future: {
