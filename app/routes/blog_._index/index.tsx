@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => [
   {
     name: "description",
     content:
-      "Halaman blog sederhana untuk membagikan tips dan trik berdasarkan pengalaman sendiri.",
+      "Halaman blog sederhana untuk membagikan tips dan trik di waktu luang.",
   },
 ];
 
@@ -36,8 +36,8 @@ export default function BlogIndex() {
         <div className="grid gap-4 text-center">
           <h1>Blog Saya</h1>
           <p>
-            Halaman blog sederhana untuk membagikan tips dan trik berdasarkan
-            pengalaman sendiri.
+            Halaman blog sederhana untuk membagikan tips dan trik di waktu
+            luang.
           </p>
         </div>
 
