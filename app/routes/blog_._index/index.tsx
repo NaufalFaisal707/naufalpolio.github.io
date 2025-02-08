@@ -7,10 +7,10 @@ import { useLoaderData } from "@remix-run/react";
 import DaftarBlog from "./daftar-blog";
 
 export const meta: MetaFunction = () => [
-  { title: "Naufal Faisal" },
+  { title: "Blog | Naufal Faisal" },
   {
     name: "description",
-    content: "ini website portfolio saya.",
+    content: "Halaman blog saya yang sederhana.",
   },
 ];
 
