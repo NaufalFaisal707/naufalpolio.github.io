@@ -68,17 +68,19 @@
   }
 
   .fade-in {
-    animation: ease-out animate-in;
+    animation: ease-in-out animate-in;
     animation-timeline: view();
   }
 
   @keyframes animate-in {
     entry 0% {
       opacity: 0;
-      scale: 0.9;
+      filter: blur(10px);
+      scale: 0.5;
     }
     entry 80% {
       opacity: 1;
+      filter: blur(0);
       scale: 1;
     }
   }
