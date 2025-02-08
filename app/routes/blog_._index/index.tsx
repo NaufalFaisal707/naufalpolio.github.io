@@ -10,7 +10,8 @@ export const meta: MetaFunction = () => [
   { title: "Blog | Naufal Faisal" },
   {
     name: "description",
-    content: "Halaman blog saya yang sederhana.",
+    content:
+      "Halaman blog sederhana untuk membagikan tips dan trik berdasarkan pengalaman sendiri.",
   },
 ];
 
@@ -34,7 +35,10 @@ export default function BlogIndex() {
       <div className="relative mx-4 flex min-h-fit flex-col justify-center gap-8 fade-in">
         <div className="grid gap-4 text-center">
           <h1>Blog Saya</h1>
-          <p>Blog sederhana yang saya tulis.</p>
+          <p>
+            Halaman blog sederhana untuk membagikan tips dan trik berdasarkan
+            pengalaman sendiri.
+          </p>
         </div>
 
         <div className="w-full">
