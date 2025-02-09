@@ -28,14 +28,16 @@ import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import ProyekUnggulan from "./proyek-unggulan";
 import Container5xl from "~/components/container-5xl";
 import typography from "~/typography.css?url";
+import { createOGMeta } from "~/lib/open-graph";
 
-export const meta: MetaFunction = () => [
-  { title: "Naufal Faisal" },
-  { name: "description", content: "ini website portfolio saya." },
-  { property: "og:title", content: "Naufal Faisal" },
-  { property: "og:image", content: "/banner/beranda.jpg" },
-  { property: "og:description", content: "ini website portfolio saya." },
-];
+export const meta: MetaFunction = () => {
+  return createOGMeta({
+    title: "Naufal Faisal",
+    description: "ini website portfolio saya.",
+    image: "/banner/beranda.jpg",
+    type: "website",
+  });
+};
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: typography },
