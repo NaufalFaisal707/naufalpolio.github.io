@@ -9,7 +9,12 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { getBlogs } from "~/utils/blog.server";
-import { format } from "date-fns";
+
+function getDate(posted_on: string) {
+  return new Date(posted_on).toLocaleString("id-ID", {
+    dateStyle: "long",
+  });
+}
 
 export default function DaftarBlog({
   blogs,
@@ -24,9 +29,7 @@ export default function DaftarBlog({
             {title}
           </Link>
         </CardTitle>
-        <CardDescription>
-          Posted on {format(new Date(posted_on), "MMM d, yyyy")}
-        </CardDescription>
+        <CardDescription>{getDate(posted_on)}</CardDescription>
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground">{description}</p>

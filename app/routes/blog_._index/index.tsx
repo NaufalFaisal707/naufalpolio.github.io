@@ -13,6 +13,12 @@ export const meta: MetaFunction = () => [
     content:
       "Halaman blog sederhana untuk membagikan tips dan trik di waktu luang.",
   },
+  { property: "og:title", content: "Blog | Naufal Faisal" },
+  {
+    property: "og:description",
+    content:
+      "Halaman blog sederhana untuk membagikan tips dan trik di waktu luang.",
+  },
 ];
 
 export const links: LinksFunction = () => [

@@ -33,6 +33,7 @@ export const meta: MetaFunction = () => [
   { title: "Naufal Faisal" },
   { name: "description", content: "ini website portfolio saya." },
   { property: "og:title", content: "Naufal Faisal" },
+  { property: "og:image", content: "/banner/beranda.jpg" },
   { property: "og:description", content: "ini website portfolio saya." },
 ];
 
