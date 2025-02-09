@@ -14,7 +14,7 @@ export function createOGMeta({ title, description, type, image }: OpenGraph) {
     { property: "og:type", content: type },
     {
       property: "og:image",
-      url: image,
+      content: image,
     },
   ];
 }
