@@ -33,8 +33,8 @@ import { createOGMeta } from "~/lib/open-graph";
 export const meta: MetaFunction = () => {
   return createOGMeta({
     title: "Naufal Faisal",
-    description: "ini website portfolio saya.",
-    image: "/banner/beranda.jpg",
+    description: "Selamat datang di website portfolio saya.",
+    image: "/banner/beranda.png",
     type: "website",
   });
 };

@@ -1,21 +1,16 @@
 import { LinksFunction } from "@remix-run/node";
 import { MetaFunction } from "@remix-run/react";
+import { createOGMeta } from "~/lib/open-graph";
 import typography from "~/typography.css?url";
 
-export const meta: MetaFunction = () => [
-  { title: "Proyek | Naufal Faisal" },
-  {
-    name: "description",
-    content:
+export const meta: MetaFunction = () => {
+  return createOGMeta({
+    title: "Proyek | Naufal Faisal",
+    description:
       "Proyek yang saya buat untuk mengasah kemampuan dan problem solving.",
-  },
-  { property: "og:title", content: "Proyek | Naufal Faisal" },
-  {
-    property: "og:description",
-    content:
-      "Proyek yang saya buat untuk mengasah kemampuan dan problem solving.",
-  },
-];
+    type: "website",
+  });
+};
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: typography },

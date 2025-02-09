@@ -1,5 +1,6 @@
 import { LoaderFunctionArgs, MetaArgs } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
+import { createOGMeta } from "~/lib/open-graph";
 import { Frontmatter, getCurentBlog } from "~/utils/blog.server";
 
 export const meta = ({ data }: MetaArgs) => {
@@ -9,15 +10,11 @@ export const meta = ({ data }: MetaArgs) => {
 
   const { title, description } = data as Frontmatter;
 
-  return [
-    { title },
-    {
-      name: "description",
-      content: description,
-    },
-    { property: "og:title", content: title },
-    { property: "og:description", content: description },
-  ];
+  return createOGMeta({
+    title,
+    description,
+    type: "website",
+  });
 };
 
 export const loader = ({ request }: LoaderFunctionArgs) => {

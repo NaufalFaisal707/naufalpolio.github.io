@@ -5,21 +5,16 @@ import typography from "~/typography.css?url";
 import { Input } from "~/components/ui/input";
 import { useLoaderData } from "@remix-run/react";
 import DaftarBlog from "./daftar-blog";
+import { createOGMeta } from "~/lib/open-graph";
 
-export const meta: MetaFunction = () => [
-  { title: "Blog | Naufal Faisal" },
-  {
-    name: "description",
-    content:
+export const meta: MetaFunction = () => {
+  return createOGMeta({
+    title: "Blog | Naufal Faisal",
+    description:
       "Halaman blog sederhana untuk membagikan tips dan trik di waktu luang.",
-  },
-  { property: "og:title", content: "Blog | Naufal Faisal" },
-  {
-    property: "og:description",
-    content:
-      "Halaman blog sederhana untuk membagikan tips dan trik di waktu luang.",
-  },
-];
+    type: "website",
+  });
+};
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: typography },
