@@ -15,6 +15,8 @@ export const meta = ({ data }: MetaArgs) => {
       name: "description",
       content: description,
     },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
   ];
 };
 

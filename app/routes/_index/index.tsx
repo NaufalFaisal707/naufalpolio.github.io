@@ -31,10 +31,9 @@ import typography from "~/typography.css?url";
 
 export const meta: MetaFunction = () => [
   { title: "Naufal Faisal" },
-  {
-    name: "description",
-    content: "ini website portfolio saya.",
-  },
+  { name: "description", content: "ini website portfolio saya." },
+  { property: "og:title", content: "Naufal Faisal" },
+  { property: "og:description", content: "ini website portfolio saya." },
 ];
 
 export const links: LinksFunction = () => [
