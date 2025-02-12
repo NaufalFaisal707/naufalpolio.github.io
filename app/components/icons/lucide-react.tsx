@@ -1,5 +1,52 @@
 import { SVGProps } from "react";
 
+export function LucideFileX2(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      >
+        <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"></path>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4M8 12.5l-5 5m0-5l5 5"></path>
+      </g>
+    </svg>
+  );
+}
+
+export function LucideSearchX(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      >
+        <path d="m13.5 8.5l-5 5m0-5l5 5"></path>
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21l-4.3-4.3"></path>
+      </g>
+    </svg>
+  );
+}
+
 export function LucideNotebookTabs(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

@@ -12,6 +12,7 @@ website portfolio sederhana yang saya buat untuk patform [vercel](https://vercel
 # buat file .env dan tambahkan konfigurasi ini
 
 GITHUB_USER=your_github_username
+GITHUB_TOKEN=your_github_profile_token
 ```
 
 ### Instalasi Depedensi

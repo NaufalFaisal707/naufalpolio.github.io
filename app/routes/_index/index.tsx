@@ -7,6 +7,7 @@ import {
 } from "@remix-run/react";
 import {
   LucideArrowRight,
+  LucideFileX2,
   LucideKeyRound,
   LucideRepeat2,
   LucideServer,
@@ -80,6 +81,36 @@ export default function Index() {
   const { github_profile, social_accounts, repos } = loaderData;
 
   const { name, bio } = github_profile;
+
+  function proyekContent() {
+    if (repos.length === 0) {
+      return (
+        <div className="flex flex-col items-center gap-4 p-8 text-center text-gray-500">
+          <LucideFileX2 className="h-12 w-12" />
+          <span className="text-lg font-medium">
+            Belum ada proyek yang di publis
+          </span>
+        </div>
+      );
+    }
+
+    return (
+      <>
+        <div className="grid grid-cols-1 gap-4">
+          <ProyekUnggulan repos={repos} />
+        </div>
+
+        <div className="mt-4 flex justify-center">
+          <Button variant="outline" asChild>
+            <Link to="/proyek">
+              Proyek Lainya
+              <LucideArrowRight />
+            </Link>
+          </Button>
+        </div>
+      </>
+    );
+  }
 
   return (
     <Container5xl className="space-y-24">
@@ -158,17 +189,8 @@ export default function Index() {
           <h1>Proyek Unggulan</h1>
           <p>Proyek yang pernah saya buat.</p>
         </div>
-        <div className="grid grid-cols-1 gap-4">
-          <ProyekUnggulan repos={repos} />
-        </div>
-        <div className="mt-4 flex justify-center">
-          <Button variant="outline" asChild>
-            <Link to="/proyek">
-              Proyek Lainya
-              <LucideArrowRight />
-            </Link>
-          </Button>
-        </div>
+
+        {proyekContent()}
       </div>
 
       <div className="relative mx-4 h-[calc(100svh_-_12rem)] min-h-fit fade-in">

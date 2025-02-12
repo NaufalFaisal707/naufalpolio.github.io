@@ -22,7 +22,7 @@ export default function DaftarBlog({
   blogs: ReturnType<typeof getBlogs>;
 }) {
   return blogs.map(({ title, description, tag, posted_on, url }, key) => (
-    <Card key={key} className="mb-4">
+    <Card key={key}>
       <CardHeader>
         <CardTitle>
           <Link to={url} className="hover:underline">

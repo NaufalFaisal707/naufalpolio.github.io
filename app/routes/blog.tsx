@@ -1,5 +1,5 @@
-import { LoaderFunctionArgs, MetaArgs } from "@remix-run/node";
-import { Outlet } from "@remix-run/react";
+import { HeadersFunction, LoaderFunctionArgs, MetaArgs } from "@remix-run/node";
+import { ClientLoaderFunctionArgs, Outlet } from "@remix-run/react";
 import { createOGMeta } from "~/lib/open-graph";
 import { Frontmatter, getCurentBlog } from "~/utils/blog.server";
 
@@ -17,6 +17,10 @@ export const meta = ({ data }: MetaArgs) => {
   });
 };
 
+export const headers: HeadersFunction = () => ({
+  "Cache-Control": "public, max-age=3600",
+});
+
 export const loader = ({ request }: LoaderFunctionArgs) => {
   const target_blog = new URL(request.url).pathname
     .slice(1)
@@ -24,6 +28,19 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
     .join(".");
 
   return getCurentBlog(target_blog);
+};
+
+let cacheLoader: typeof loader | unknown;
+export const clientLoader = async ({
+  serverLoader,
+}: ClientLoaderFunctionArgs) => {
+  if (cacheLoader) {
+    return cacheLoader;
+  }
+
+  cacheLoader = await serverLoader();
+
+  return cacheLoader;
 };
 
 export default function BlogPose() {
