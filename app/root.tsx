@@ -1,4 +1,5 @@
 import {
+  ClientLoaderFunctionArgs,
   Links,
   Meta,
   Outlet,
@@ -8,7 +9,12 @@ import {
 import { SpeedInsights } from "@vercel/speed-insights/remix";
 import Navbar from "./components/navbar";
 import tailwind from "~/tailwind.css?url";
-import { LinksFunction } from "@remix-run/node";
+import { HeadersFunction, LinksFunction } from "@remix-run/node";
+import {
+  fetchGithubProfile,
+  fetchGithubRepos,
+  fetchGithubSocialAccount,
+} from "./utils/fetch-github.server";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwind },
@@ -23,6 +29,35 @@ export const links: LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
 ];
+
+export const headers: HeadersFunction = () => ({
+  "Cache-Control": "public, max-age=3600",
+});
+
+export const loader = async () => {
+  const github_profile = await fetchGithubProfile();
+  const social_accounts = await fetchGithubSocialAccount();
+  const repos = await fetchGithubRepos();
+
+  return {
+    github_profile,
+    social_accounts,
+    repos,
+  };
+};
+
+let cacheLoader: typeof loader | unknown;
+export const clientLoader = async ({
+  serverLoader,
+}: ClientLoaderFunctionArgs) => {
+  if (cacheLoader) {
+    return cacheLoader;
+  }
+
+  cacheLoader = await serverLoader();
+
+  return cacheLoader;
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

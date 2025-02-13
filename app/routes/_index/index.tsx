@@ -1,10 +1,5 @@
-import { HeadersFunction, LinksFunction } from "@remix-run/node";
-import {
-  ClientLoaderFunctionArgs,
-  Link,
-  MetaFunction,
-  useLoaderData,
-} from "@remix-run/react";
+import { LinksFunction } from "@remix-run/node";
+import { Link, MetaFunction, useRouteLoaderData } from "@remix-run/react";
 import {
   LucideArrowRight,
   LucideFileX2,
@@ -20,16 +15,12 @@ import {
 } from "~/components/icons/my-icons";
 import SocialAccout from "./social-accounts";
 import { Button } from "~/components/ui/button";
-import {
-  fetchGithubProfile,
-  fetchGithubRepos,
-  fetchGithubSocialAccount,
-} from "~/utils/fetch-github.server";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import ProyekUnggulan from "./proyek-unggulan";
 import Container5xl from "~/components/container-5xl";
 import typography from "~/typography.css?url";
 import { createOGMeta } from "~/lib/open-graph";
+import { RootResponse } from "~/types";
 
 export const meta: MetaFunction = () => {
   return createOGMeta({
@@ -44,46 +35,19 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: typography },
 ];
 
-export const headers: HeadersFunction = () => ({
-  "Cache-Control": "public, max-age=3600",
-});
-
-export const loader = async () => {
-  const github_profile = await fetchGithubProfile();
-  const social_accounts = await fetchGithubSocialAccount();
-  const repos = (await fetchGithubRepos()).filter((f) =>
-    f.topics?.includes("featured-project"),
-  );
-
-  return {
-    github_profile,
-    social_accounts,
-    repos,
-  };
-};
-
-let cacheLoader: typeof loader | unknown;
-export const clientLoader = async ({
-  serverLoader,
-}: ClientLoaderFunctionArgs) => {
-  if (cacheLoader) {
-    return cacheLoader;
-  }
-
-  cacheLoader = await serverLoader();
-
-  return cacheLoader;
-};
-
 export default function Index() {
-  const loaderData = useLoaderData<typeof loader>();
+  const routeLoaderData = useRouteLoaderData("root") as RootResponse;
 
-  const { github_profile, social_accounts, repos } = loaderData;
+  const { github_profile, social_accounts, repos } = routeLoaderData;
 
   const { name, bio } = github_profile;
 
   function proyekContent() {
-    if (repos.length === 0) {
+    const filteredRepos = repos.filter((f) =>
+      f.topics?.includes("featured-project"),
+    );
+
+    if (filteredRepos.length === 0) {
       return (
         <div className="flex flex-col items-center gap-4 p-8 text-center text-gray-500">
           <LucideFileX2 className="h-12 w-12" />
@@ -97,7 +61,7 @@ export default function Index() {
     return (
       <>
         <div className="grid grid-cols-1 gap-4">
-          <ProyekUnggulan repos={repos} />
+          <ProyekUnggulan repos={filteredRepos} />
         </div>
 
         <div className="mt-4 flex justify-center">

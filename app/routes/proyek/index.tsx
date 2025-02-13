@@ -1,17 +1,13 @@
-import { HeadersFunction, LinksFunction } from "@remix-run/node";
-import {
-  ClientLoaderFunctionArgs,
-  MetaFunction,
-  useLoaderData,
-} from "@remix-run/react";
+import { LinksFunction } from "@remix-run/node";
+import { MetaFunction, useRouteLoaderData } from "@remix-run/react";
 import Container5xl from "~/components/container-5xl";
 import { Input } from "~/components/ui/input";
 import { createOGMeta } from "~/lib/open-graph";
 import typography from "~/typography.css?url";
 import DaftarProyek from "./daftar-proyek";
-import { fetchGithubRepos } from "~/utils/fetch-github.server";
 import { LucideFileX2, LucideSearchX } from "~/components/icons/lucide-react";
 import { useState } from "react";
+import { RootResponse } from "~/types";
 
 export const meta: MetaFunction = () => {
   return createOGMeta({
@@ -26,37 +22,17 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: typography },
 ];
 
-export const headers: HeadersFunction = () => ({
-  "Cache-Control": "public, max-age=3600",
-});
-
-export const loader = async () => {
-  return (await fetchGithubRepos()).filter((f) => {
-    return f.topics?.includes("my-project");
-  });
-};
-
-let cacheLoader: typeof loader | unknown;
-export const clientLoader = async ({
-  serverLoader,
-}: ClientLoaderFunctionArgs) => {
-  if (cacheLoader) {
-    return cacheLoader;
-  }
-
-  cacheLoader = await serverLoader();
-
-  return cacheLoader;
-};
-
 export default function Proyek() {
-  const loaderData = useLoaderData<typeof loader>();
+  const routeLoaderData = useRouteLoaderData("root") as RootResponse;
 
   const [searchProyek, setSearchProyek] = useState("");
 
   function proyekContent() {
-    const filteredProyek = loaderData.filter((f) => {
-      return f.name.toLowerCase().includes(searchProyek.toLowerCase());
+    const filteredProyek = routeLoaderData.repos.filter((f) => {
+      return (
+        f.name.toLowerCase().includes(searchProyek.toLowerCase()) &&
+        f.topics?.includes("my-project")
+      );
     });
 
     if (filteredProyek.length === 0 && !!searchProyek) {
