@@ -49,12 +49,10 @@
   @keyframes animate-in {
     0% {
       opacity: 0;
-      filter: blur(5px);
       scale: 0.5;
     }
     20% {
       opacity: 1;
-      filter: blur(0);
       scale: 1;
     }
   }
